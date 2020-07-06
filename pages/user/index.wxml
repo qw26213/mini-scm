@@ -1,0 +1,28 @@
+<view class="toper plr15 ub ub-ac">
+    <view class="userDiv" bindtap="toPath" data-url="/pages/account/index">
+        <open-data type="userAvatarUrl" class="userImg udb"></open-data>
+    </view>
+    <view class="txt" bindtap="toPath" data-url="/pages/account/index"><open-data type="userNickName" lang="zh_CN"></open-data></view>
+</view>
+<view class="content">
+    <view class="item ub ub-ac p10 brt10" bindtap="toPath" data-url="/pages/orderlist/index">
+        <image src="/images/icon_ping.png" class="icon_cell" mode="aspectFit"></image>
+        <view class="ub-f1 itemTit">我的订单</view>
+        <image src="/images/arrow-right.png" class="arrow-right"></image>
+    </view>
+    <view class="item ub ub-ac p10 btc" bindtap="gocartpage">
+        <image src="/images/icon_ping.png" class="icon_cell" mode="aspectFit"></image>
+        <view class="ub-f1 itemTit">购物车</view>
+        <image src="/images/arrow-right.png" class="arrow-right"></image>
+    </view>
+    <view class="item ub ub-ac p10 btc" bindtap="toPath" data-url="/pages/address/list">
+        <image src="/images/icon_ping.png" class="icon_cell" mode="aspectFit"></image>
+        <view class="ub-f1 itemTit">收货地址</view>
+        <image src="/images/arrow-right.png" class="arrow-right"></image>
+    </view>
+    <button class='kefu ub ub-ac pl0 btc' open-type='contact' session-from='weapp'>
+        <image src="/images/icon_ping.png" class="icon_cell" mode="aspectFit"></image>
+        <view class="ub-f1 itemTit">联系客服</view>
+        <image src="/images/arrow-right.png" class="arrow-right"></image>
+    </button>
+</view>

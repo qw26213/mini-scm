@@ -1,0 +1,45 @@
+page{height:100%;}
+.container{width:100%;height:auto;background:#f8f9fa;padding:0;overflow:hidden;padding-bottom:106rpx;}
+.swiper-wrap{position:relative;width:100%;height:420rpx;}
+.typePop{width:140rpx;height:60rpx;background:#ffdb00;display:flex;align-items:center;justify-content:center;font-size:26rpx;color:#333;border-radius:0 30rpx 30rpx 0;position:absolute;top:0;left:0;}
+.img-wrap{width:100%;height:100%;}
+.img-wrap image{width:100%;height:100%;}
+.moreJuzi{display:flex;align-items:center;font-size:24rpx;color:#666;margin-top:4rpx;}
+.businessInfo-wrap{width:100%;box-sizing:border-box;}
+.businessInfo{background-color:#fff;width:100%;box-sizing:border-box;padding:32rpx 28rpx;}
+.businessInfo .title{width:100%;font-size:28rpx;color:#333;}
+
+.line{width:100%;height:1rpx;background-color:#eee;}
+
+.prodrctInfo{width:100%;box-sizing:border-box;padding: 20rpx;background-color: #ffffff}
+.productname{font-size:28rpx;color:#333;text-align: justify;}
+.shareIcon{display: block;width: 40rpx;height: 40rpx;}
+.productCount{margin-top: 20rpx;}
+.productCount .price{font-size: 32rpx;color: #c3a769;font-weight: bold;}
+.productCount .count{font-size: 26rpx;color: #6666;}
+.proInduction{width: 100%;display: block; margin-top: 20rpx}
+.productImg{width: 100%;display: block;}
+.xuzhi{font-size:12px;color:#999;}
+.nickname{font-size:15px;color:#333;margin-left:20rpx;}
+
+.footer{position:fixed;bottom:0;left:0;width:100%;height:96rpx;background:#fff;}
+.smallBtn{height: 96rpx;background-color: #fff;border:none;padding: 15rpx 0 0;}
+.small_icon{width: 32rpx;height: 32rpx; display: block;}
+.small_txt{font-size: 20rpx;}
+.joinBtn{height: 96rpx;text-align: center;line-height: 96rpx;background-color: #f3eee1;color: #c3a769;font-size: 32rpx; border:none;border-radius: 0;font-weight: bold}
+.buyBtn{height: 96rpx;background-color: #c3a769;text-align: center;line-height: 96rpx;color: #fff;font-size: 32rpx; border:none;border-radius: 0;font-weight: bold}
+
+.selectWrap{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:999;}
+.selectModal{position: fixed;bottom: 0;left: 0;width: 100%;padding: 36rpx 24rpx;box-sizing:border-box;z-index:9999999999;background-color: #fff;}
+.closeSelect{position: absolute;width: 90rpx;height: 90rpx;top: 0;right: 0;z-index:99999}
+.closeSelect image{display: block;width: 40rpx;height: 40rpx;}
+.selectTit{font-size: 24rpx;color: #333;}
+.selectType{margin-top: 30rpx;}
+.selectType view{height: 56rpx;background-color: #f6f6f6;font-size: 24rpx;color: #333;margin-right: 24rpx;border-radius: 100rpx; padding:0 40rpx;text-align: center;line-height: 56rpx;box-sizing:border-box;display: inline-block;margin-bottom: 16rpx;}
+.selectType view:last-child{margin-right: 0;}
+.selectType view.on{background-color: #ffdb00;}
+.selectType view.null{border: 1rpx dashed #CFCFCF;color: #CFCFCF;background-color: #fff;}
+.selectDiv{background: #FFFCEF;border: 1rpx solid #FFDB00;border-radius: 4rpx;height: 60rpx;width: 100%;padding-left: 20rpx;box-sizing:border-box;margin-top: 20rpx;font-size: 24rpx;color: #999999;}
+.selectBtn{width: 100%;height: 90rpx;line-height: 90rpx;text-align: center;background-color: #ffdb00;border-radius: 100rpx;font-size: 34rpx;color: #333;margin-top: 44rpx;font-weight: bold;}
+.memberp {font-size: 18rpx; color: #e83221;background: #DEDEDE; border-radius: 2rpx;margin-left:20rpx;padding:4rpx;}
+

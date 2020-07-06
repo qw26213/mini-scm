@@ -1,0 +1,19 @@
+<view class="item plr10" wx:for="{{datalist}}" wx:for-item="item" wx:key="unique" style="padding-top:10rpx">
+	<view class="addressInfo" bindtap="selectAddress">
+        <view class="txt"><text>{{item.name}}</text><text style="margin-left:40rpx">{{item.mobile}}</text></view>
+        <view class="txt">{{item.address}}</view>
+        <image wx:if="{{!isWrite}}" src="/images/arrow-right.png" class="arrow-right"></image>
+	</view>
+    <view class="ub ub-ac bottom" wx:if="{{isWrite}}">
+        <view class="ub-f1"></view>
+        <button class="compile" size="mini" bindtap="toModify" data-id="{{item.id}}">编辑</button>
+        <button class="del" size="mini" bindtap="toDel" data-id="{{item.id}}">删除</button>
+    </view>
+</view>
+<view class="ub ub-ac ub-ver noneDiv" hidden="{{isShowNull}}">
+    <image class="nodataImg" src="/images/null2.png"></image>
+    <view class="nodataTxt">你还没添加任何地址</view>
+</view>
+<view class="plr15 mt30" wx:if="{{isWrite}}">
+    <button form-type="submit" class="add" role="button" aria-disabled="false" bindtap="toAdd">添加</button>
+</view>

@@ -1,0 +1,16 @@
+page{padding-top: 0!important;}
+
+.tablist{height: 100rpx;background-color: #fff}
+.tablist .tabItem{position: relative;font-size: 28rpx;color: #333;padding:0 40rpx;height: 100rpx;line-height: 100rpx;text-align: center;}
+.tablist .tabItem .line{width:72rpx;height: 4rpx;background-color: #c3a769;border-radius: 2rpx;position:absolute;bottom: 16rpx;left: 50%;margin-left: -36rpx;display: none;}
+.tablist .tabItem.on{color:#333;font-size: 30rpx;font-weight: bold;}
+.tablist .tabItem.on .line{display: block;}
+
+.productList{box-shadow: 0 3px 5px 3px rgba(229,229,229,0.50);border-radius:10rpx;margin-top:20rpx;position: relative;padding-bottom: 25rpx;background-color: #fff}
+.productList .productImg{width:100%;height:340rpx;border-top-left-radius:10rpx;border-top-right-radius:10rpx;background-color: #e7e7e7}
+.pro-name{font-size:24rpx;color:#333;margin-top:15rpx;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:2;-webkit-box-orient:vertical;padding:0 20rpx;}
+.price-wrap{display:flex;align-items:center;margin-top:12rpx;padding:0 20rpx;}
+.price{font-size: 32rpx;color: #c3a769}
+.count{font-size: 28rpx;color:#999;margin-left:20rpx;}
+
+.buyBtn{background: #c3a769;border-radius:6rpx;color:#fff;margin-left: 20rpx; width: 100rpx;height: 48rpx;padding: 0;text-align: center;line-height: 48rpx;font-size: 24rpx;}

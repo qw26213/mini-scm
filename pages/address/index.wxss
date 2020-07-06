@@ -1,0 +1,11 @@
+.title{font-size:24rpx;color:#666;line-height:60rpx;padding-left:30rpx;}
+.cell{height:100rpx;background:#fff;}
+.tit{font-size:28rpx;color:#333;margin-right:20rpx;}
+.cell input{font-size:28rpx;color:#333;}
+.red{color:#f00;}
+
+.textarea{font-size: 26rpx;color: #333;height: 160rpx;line-height: 48rpx;}
+
+button{background-color: #c3a769;font-size: 32rpx;color: #fff}
+.picker{color:#333;font-size:28rpx;}
+.picker image{margin-left: 15rpx}

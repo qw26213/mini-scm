@@ -1,0 +1,18 @@
+<wxs module="filter" src="../../utils/numFr.wxs"></wxs>
+<view class="tablist">
+    <view class="tablist ub ub-ac ub-pj1">
+        <view wx:for="{{tablist}}" wx:key="unique" class="tabItem">{{item.name}}
+            <view class="line"></view>
+        </view>
+    </view>
+</view>
+<view class="productList" wx:for="{{productList}}" wx:for-index='index' wx:key="unique">
+    <image class="productImg" bindtap="toDetail" data-id="{{item.productId}}" lazy-load="true" src="/images/ppp.png" mode="aspectFill"></image>
+    <view class="pro-name" bindtap="toDetail" style="margin-top:8rpx">商品名称商品名称商品名称商品名称商品名称商品名称</view>
+    <view class="price-wrap ub-pj1">
+        <view class="price ub-f1">￥10.00
+            <text class="count">已售10</text>
+        </view>
+        <button class="buyBtn" bindtap="toDetail">购买</button>
+    </view>
+</view>
