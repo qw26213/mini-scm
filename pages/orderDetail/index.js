@@ -1,4 +1,4 @@
-import { errDialog, loading,barcode,formatDate} from '../../utils/util';
+import { errDialog, loading,formatDate} from '../../utils/util';
 import { service} from '../../service';
 import { constant} from '../../utils/constant';
 var app = getApp();
@@ -113,26 +113,7 @@ Page({
     this.setData({isTimeOpen:false});
   },
   getListVoucher:function(code){
-    var obj = {
-      code:code,
-      openId:wx.getStorageSync('openid')
-    }
-    service.listVouchers(obj).subscribe({
-      next: res => {
-        this.setData({voucherInfo: res[0]});
-        console.log(res[0].validEndDate);
-        this.setData({validEndDate:res[0].validEndDate.substring(0,10)});
-        if(this.data.orderInfo.status=='PAID'&&this.data.voucherInfo.validDays>=0){
-          barcode('barcode', this.data.orderInfo.vouchers[0].voucherCode, 664, 136);
-          timer = setInterval(()=>{
-            this.setData({isTimeOpen:true});
-            this.getData(this.data.orderId);
-          },2000);
-        }
-      },
-      error: err => console.log(err),
-      complete: () => wx.hideToast()
-    })
+
   },
   toPay: function() {
     var payInfo = JSON.parse(this.data.preOrderStr);

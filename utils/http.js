@@ -28,13 +28,13 @@ function http_request(url, method, data) {
             wx.request({
                 url: url,
                 data: data,
-                header: { 'content-type': 'application/json', 'token': wx.getStorageSync('token') },
+                header: { 'content-type': 'application/json', 'sessionKey': wx.getStorageSync('sessionKey'), 'appId': constant.APPID },
                 method: method,
                 success: res => {
-                    if (res.data.errorCode === '200') {
+                    if (res.data.errorCode === '0') {
                         return listener.next(res.data.data);
                     } else {
-                        return listener.error(res.data.errorInfo);
+                        return listener.error(res.data.msg);
                     }
                 },
                 fail: res => listener.error(res.errMsg),
@@ -45,7 +45,6 @@ function http_request(url, method, data) {
     }
     return xs.create(producer)
 }
-
 
 module.exports = {
     http: http

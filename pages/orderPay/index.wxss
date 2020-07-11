@@ -11,7 +11,7 @@ page{box-sizing:border-box;height:100%;background-color:#f5f5f5}
 .goodPrice{font-size:24rpx;color:#c3a769;margin-top: 15rpx}
 .goodCount .tit{font-size:26rpx;color:#333333;}
 .numberCtrl .ctlbtn{color:#999;width:50rpx;height:40rpx;display:block;background-color:#f5f5f5;}
-.numberCtrl .goodNum{width:70rpx;height:40rpx;text-align:center;font-size:24rpx;color:#333;background-color:#f5f5f5;line-height:40rpx;margin:0 10rpx;font-weight:bold;}
+.goodNum{width:70rpx;height:40rpx;text-align:center;font-size:24rpx;color:#333;line-height:40rpx;margin:0 10rpx;font-weight:bold;}
 
 .btn_bottom{height:96rpx;position:fixed;bottom:0;left:0;width:100%;box-sizing:border-box;background:#ffffff;}
 .btnNum{font-size:30rpx;color:#c3a769;font-weight: bold}

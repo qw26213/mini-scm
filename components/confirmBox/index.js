@@ -4,9 +4,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    isShowConfirmModal:{
+    hideConfirmModal:{
       type: Boolean,
-      value: true
+      value: false
     },
     confirmBoxTitle:{
       type:String,
@@ -42,23 +42,17 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    closeConfirmModal:function(){
-      this.setData({
-        isShowConfirmModal: true
-      });
+    closeConfirmModal: function(){
+      this.doConfirmBtn()
     },
-    closeByTapModal:function(){
+    closeByTapModal: function(){
       if (this.data.modalTapClose){
         this.setData({
-          isShowConfirmModal: true
-        });
+          hideConfirmModal: true
+        })
       }
     },
-    tapWin:function(){
-      console.log('点击了窗口边缘');
-    },
-    doConfirmBtn:function(){
-      console.log('点击了确认按钮');
+    doConfirmBtn: function(){
       this.triggerEvent('clickConfirmBtn');
     }
   }

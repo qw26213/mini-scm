@@ -104,6 +104,13 @@
 					"id": -1,
 					"name": "pages/orderPay/index",
 					"pathName": "pages/orderPay/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/cart/index",
+					"pathName": "pages/cart/index",
 					"scene": null
 				}
 			]

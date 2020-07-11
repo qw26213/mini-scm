@@ -3,33 +3,50 @@
     <view class="swiper-wrap">
         <swiper class="img-wrap" autoplay="true" interval="3000">
             <swiper-item wx:for="{{slide_image}}" wx:key="unique">
-                <image class="slide-image" bindtap="toDetail" lazy-load="true" src="/images/ppp.png" mode="aspectFill"></image>
+                <image class="slide-image" lazy-load="true" src="{{item.attachmentUrl}}" mode="aspectFill"></image>
             </swiper-item>
         </swiper>
     </view>
     <view class="prodrctInfo">
         <view class="productname ub ub-ac">
-            <view class="ub-f1">商品商品商品商品商品商品商品商品</view>
-            <image class="shareIcon" src="/images/icon_ping.png"></image>
+            <view class="ub-f1">{{ productInfo.itemName }}</view>
+            <image class="shareIcon" bindtap="toShare" data-id="{{productInfo.id}}" src="/images/icon_ping.png"></image>
         </view>
         <view class="productCount ub ub-ac">
-            <view class="price ub-f1">￥100.00</view>
-            <view class="count">销量100</view>
+            <view class="price ub-f1">￥{{ productInfo.price1 ? productInfo.price1 : productInfo.price }}</view>
+            <view class="count">销量{{ productInfo.soldQty }}</view>
         </view>
         <view class="line" style="margin-top:30rpx;"></view>
         <view class="ub ub-ac" style="margin-top:26rpx;">
             <view class="ub ub-ac ub-f1" bindtap="toMap">
                 <image style="width:20rpx;height:23rpx;margin-right:10rpx;" src="/images/position.png"></image>
-                <view style="font-size: 24rpx;color: #666666;">门店门店门店门店门店</view>
+                <view style="font-size: 24rpx;color: #666666;">{{ enterpriseInfo.name }}</view>
             </view>
-            <image bindtap="call" style="width:30rpx;height:30rpx;" src="/images/call.png"></image>
+            <image bindtap="call" data-tel="{{enterpriseInfo.tel}}" style="width:30rpx;height:30rpx;" src="/images/call.png"></image>
         </view>
     </view>
     <view class="proInduction">
-        <image class="productImg" src="/images/pp1.png" mode="widthFix"></image>
-        <image class="productImg" src="/images/pp2.png" mode="widthFix"></image>
-        <image class="productImg" src="/images/pp3.png" mode="widthFix"></image>
+        <image class="productImg" wx:for="{{content_image}}" wx:key="unique" src="{{item.attachmentUrl}}" mode="widthFix"></image>
     </view>
+    <view class="selectWrap" hidden="{{!isShowSelect}}" bindtap="toggleSelect"></view>
+    <view class="ub ub-ver selectModal" hidden="{{!isShowSelect}}">
+        <view class="closeSelect ub ub-ac ub-pc" bindtap="toggleSelect"><image src="/images/icon_close.png"></image></view>
+        <view class="ub ub-ac selectTit">规格:</view>
+        <view class="selectType">
+            <view wx:for="{{productList}}" wx:key="unique" class="{{item.id==selectedId?'on':''}}" data-id="{{item.id}}" bindtap="selectType">{{item.norms}}</view>
+        </view>
+        <view class="ub ub-ac ub-pj goodCount">
+            <view class="tit ub ub-ac">购买数量:</view>
+            <view class="numberCtrl ub ub-ac">
+                <image class="ctlbtn" src="/images/ion-del.png" data-index="{{index}}" data-arrow="left" bindtap="addNumber"></image>
+                <view class="goodNum">{{count}}</view>
+                <image class="ctlbtn" src="/images/ion-add.png" data-index="{{index}}" data-arrow="right" bindtap="addNumber"></image>
+            </view>
+        </view>
+        <button wx:if="{{buyType == 1}}" class="selectBtn" bindtap="saveGoodToCart">加入购物车</button>
+        <button wx:if="{{buyType == 2}}" class="selectBtn" bindtap="toBuy">下一步</button>
+    </view>
+
     <view class="footer ub ub-ac">
         <view class="ub" style="width:220rpx" open-type='contact' session-from='weapp'>
             <button class="smallBtn ub-f1 ub ub-ver ub-ac">
@@ -42,6 +59,6 @@
             </button>
         </view>
         <button class="joinBtn ub-f1" bindtap="joinBus">加入购物车</button>
-        <button class="buyBtn ub-f1" bindtap="toBuy">立即购买</button>
+        <button class="buyBtn ub-f1" bindtap="joinBuy">立即购买</button>
     </view>
 </view>

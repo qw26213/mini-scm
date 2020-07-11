@@ -16,13 +16,9 @@
             <view class="skuName">规格：{{ item.skuName }}</view>
             <view class="goodPrice">单价：{{filter.toFix(item.price)}}元</view>
         </view>
-        <view class="ub ub-ac ub-pj goodCount">
+        <view class="ub ub-ac goodCount">
             <view class="tit ub ub-ac">购买数量:</view>
-            <view class="numberCtrl ub ub-ac">
-                <image class="ctlbtn" src="/images/ion-del.png" data-index="{{index}}" data-arrow="left" bindtap="addNumber"></image>
-                <view class="goodNum">{{item.count}}</view>
-                <image class="ctlbtn" src="/images/ion-add.png" data-index="{{index}}" data-arrow="right" bindtap="addNumber"></image>
-            </view>
+            <view class="goodNum">{{item.count}}</view>
         </view>
     </view>
 </view>

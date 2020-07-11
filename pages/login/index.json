@@ -1,6 +1,3 @@
 {
-	"navigationBarBackgroundColor": "#FFDC00",
-	"usingComponents": {
-		"nav-bar": "/components/navbar/index"
-	}
+	"navigationBarTitleText": "快销在线"
 }

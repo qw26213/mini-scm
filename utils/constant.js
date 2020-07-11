@@ -1,13 +1,8 @@
 var constant = {
-  TPLID: '1.2.12',//应用版本
-  APPID: 'wxb03b0ab93bb60ecc',//小程序wxid
-  apiUrl: 'https://c.juniuo.com/wxapp', //mall //shopping  /wxapp
-  // apiUrl: 'https://upic-test.juniuo.com',//测试环境
-  //jujipayUrl: 'https://juji.juniuo.com', //测试 https://juji-dev.juniuo.com
-  uploadUrl: 'https://juji.juniuo.com',
-  basePicUrl: 'https://upic.juniuo.com/file/picture/',//图片前缀
-  basePicFix: '/resize_320_0/mode_fill',//图片后缀
-  basePicFix1: '/resize_80_0/mode_fill'//图片后缀
+  TPLID: '1.2.12',
+  APPID: 'wxdc714567e5ecfaa5',
+  apiUrl: 'http://49.232.47.16'
+  // apiUrl: 'http://192.168.10.19'
 }
 module.exports = {
   constant: constant
