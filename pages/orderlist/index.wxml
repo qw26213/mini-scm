@@ -12,16 +12,16 @@
             <view class="ub ub-ac ub-pj top">
                 <view class="status">{{ format.formatStatus(item.status)}}</view>
             </view> 
-            <view class="ub ub-ac info" bindtap="toDetail" data-id="{{item.orderId}}" data-status="{{item.status}}" wx:for="{{item.orderItemList}}" wx:for-item='it' wx:key="unique">
+            <view class="ub ub-ac info" bindtap="toDetail" data-id="{{item.orderId}}" data-status="{{item.status}}" wx:for="{{item.salesDetail}}" wx:for-item='it' wx:key="unique">
                 <image class="goodImg udb" src="/images/pp1.png" mode="aspectFill"></image>
                 <view class="ub-f1 goodMsg">
-                    <view class="goodTit">{{format.toEllipsis(it.productName)}}</view>
+                    <view class="goodTit">{{format.toEllipsis(it.itemName)}}</view>
                     <view class="storeName">{{it.merchantName}}</view>
                     <view class="goodAmount"><text>{{format.toFix(it.price)}}元</text></view>
                 </view>
             </view>
             <view class="tx-r total" wx:if="{{item.status=='CREATED'||item.status=='CLOSE'}}">
-              合计：<text>{{format.toFix(item.amount)}}元</text>
+              合计：<text>{{format.toFix(item.qty)}}元</text>
             </view>
             <view class="ctrl plr15 ub ub-ac ub-pj" wx:if="{{item.status=='PAID'||item.status=='CREATED'||item.status=='CONSUME'}}">
                 <view wx:if="{{item.status=='PAID'}}" class="left">您已成功付款，请到店展示消费码消费</view>

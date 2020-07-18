@@ -32,7 +32,7 @@ Page({
                 this.setData({ addresslist: res })
                 this.setData({
                     addrInfo: res.find(item => item.isDefault == 1),
-                    selectedAddr: res.some(item => item.isDefault == 1)
+                    selectedAddr: res.some(item => item.isDefault == 1 && item.tel)
                 })
             },
             error: err => console.log(err),
