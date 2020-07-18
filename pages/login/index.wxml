@@ -1,4 +1,3 @@
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view wx:if="{{showPageLoading}}" class="pageLoading">
   <image src="/images/pageLoading.gif" class="pageLoadingImg"></image>
   <view class="pageLoadingTip" style="color:#666666;font-size: 30rpx;">快销在线正在登录</view>

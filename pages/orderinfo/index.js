@@ -5,7 +5,6 @@ var app = getApp();
 Page({
     data: {
         cart_list: [],
-        goodsId: '',
         addresslist: [],
         selectedAddr: true,
         addrInfo: {},
@@ -14,8 +13,7 @@ Page({
     onLoad: function(options) {
         console.log(options)
         wx.hideShareMenu()
-        if (options.type == 1) {
-            this.setData({ goodsId: options.id })
+        if(options.type == 1) {
             this.getData(options.id, options.sid, options.count)
         } else {
             service.cartlist().subscribe({
@@ -29,8 +27,8 @@ Page({
         }
         service.addrlist().subscribe({
             next: res => {
-                this.setData({ addresslist: res })
-                this.setData({
+                this.setData({addresslist:res})
+                this.setData({ 
                     addrInfo: res.find(item => item.isDefault == 1),
                     selectedAddr: res.some(item => item.isDefault == 1)
                 })
@@ -60,7 +58,7 @@ Page({
                 var productList = res.detailLine || []
                 var cart_list = []
                 var productInfo = productList.find(item => item.id == sid)
-                productInfo.qty = Number(count)
+                productInfo.qty = count
                 cart_list.push(productInfo)
                 this.setData({ cart_list: cart_list })
                 console.log(this.data.cart_list)
@@ -71,12 +69,12 @@ Page({
         })
     },
     //下拉刷新
-    onPullDownRefresh: function() {
+    onPullDownRefresh:function() {
         this.setData({ pageNo: 1 });
     },
     //上拉加载
-    onReachBottom: function() {
-        if (this.data.isFinall) {
+    onReachBottom:function() {
+        if(this.data.isFinall){
             return
         }
         this.setData({
@@ -91,8 +89,6 @@ Page({
         var obj = {
             salesDetail: this.data.cart_list.map(item => {
                 return {
-                    goodsId: this.data.goodsId,
-                    goodsDetailId: item.id,
                     itemName: item.itemName,
                     vatPrice: item.price,
                     itemId: item.id,
@@ -103,14 +99,8 @@ Page({
                 }
             }),
             sumAmount: this.data.amount,
-            contact: this.data.addrInfo.contact,
-            tel: this.data.addrInfo.tel,
-            province: this.data.addrInfo.province,
-            city: this.data.addrInfo.city,
-            district: this.data.addrInfo.district,
-            addr: this.data.addrInfo.addr
+            ...this.data.addrInfo
         }
-        wx.showLoading({title: '提交中'})
         service.orderSave(obj).subscribe({
             next: res => {
                 wx.showToast({

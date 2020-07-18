@@ -1,18 +1,18 @@
 <view class="title">收货信息</view>
 <view class="cell plr15 ub ub-ac">
     <view class="tit">
-        <text class="red">*</text>联系人姓名</view>
-    <input class="ub-f1 tx-r" type="text" value="{{contactName}}" bindinput="bindInput1" placeholder="联系人姓名" />
+        <text class="red">*</text>收货人</view>
+    <input class="ub-f1 tx-r" type="text" value="{{contact}}" bindinput="bindInput1" placeholder="联系人姓名" />
 </view>
 <view class="cell plr15 ub ub-ac btc">
     <view class="tit">
-        <text class="red">*</text>联系人电话</view>
-    <input class="ub-f1 tx-r" type="text" value="{{contactPhone}}" bindinput="bindInput2" placeholder="联系人电话" />
+        <text class="red">*</text>手机号码</view>
+    <input class="ub-f1 tx-r" type="text" value="{{tel}}" bindinput="bindInput2" placeholder="联系人电话" />
 </view>
 <view class="cell plr15 ub ub-ac btc">
-    <view class="tit"><text class="red">*</text>省市区</view>
+    <view class="tit"><text class="red">*</text>所在地区</view>
     <picker class="ub-f1" mode="region" bindchange="bindRegionChange" value="{{region}}">
-        <view class="picker ub ub-ac ub-pe" wx:if="{{region.length>0}}">
+        <view class="picker ub ub-ac ub-pe" wx:if="{{region.length > 0}}">
           {{region[0]}}，{{region[1]}}，{{region[2]}}
           <image class="arrow-right" src="/images/arrow-right.png"></image>
         </view>
@@ -25,9 +25,9 @@
 <view class="bgb plr15 ub ub-ver btc">
     <view class="cell tit ub ub-ac"><text class="red">*</text>详细地址</view>
     <view class="udb">
-        <textarea value="{{address}}" class="textarea" placeholder="详细地址（具体到门牌号）" bindinput="bindInput3" placeholder-style=""></textarea>
+        <textarea value="{{addr}}" class="textarea" placeholder="详细地址（具体到门牌号）" bindinput="bindInput3" placeholder-style=""></textarea>
     </view>
 </view>
 <view class="mt30 plr20">
-    <button form-type="submit" role="button" aria-disabled="false" bindtap="submit" data-type="1">确认添加</button>
+    <button form-type="submit" role="button" aria-disabled="false" bindtap="addrSave" data-type="1">确认添加</button>
 </view>

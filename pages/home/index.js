@@ -13,15 +13,15 @@ Page({
         isShowNodata: false
     },
     onLoad: function(options) {
+        console.log('home page------------')
         wx.showShareMenu({ withShareTicket: true })
         this.getTab()
         this.getData()
     },
     toDetail: function(e) {
         var id = e.currentTarget.dataset.id
-        var storeid = 10 // e.currentTarget.dataset.storeid;
         wx.navigateTo({
-            url: '/pages/detail/index?share=0&referer=0&id=' + id
+            url: '/pages/detail/index?id=' + id
         });
     },
     getDataByCode: function(e) {
@@ -42,6 +42,7 @@ Page({
         })
     },
     getData: function() {
+        console.log('get productlist------------')
         service.productlist({tabCode: this.data.tabCode}).subscribe({
             next: res => {
                 const result = res || []
@@ -55,13 +56,12 @@ Page({
             complete: () => wx.hideToast()
         })
     },
-    // 分享
-    toComDetailAndShare: function(e) {
-        var id = e.currentTarget.dataset.id;
-        var storeid = e.currentTarget.dataset.storeid;
-        wx.navigateTo({
-            url: '/pages/detail/index?share=1&referer=0&id=' + id + '&storeid=' + storeid
-        });
+    onShareAppMessage: function(res) {
+        return {
+            title: '快销在线，生活的好帮手',
+            imageUrl: '/images/shareImg.png',
+            path: '/pages/login/index?referer=1&shareCode=' + wx.getStorageSync('shareCode')
+        }
     },
     //上拉加载
     onReachBottom:function() {

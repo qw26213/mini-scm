@@ -3,17 +3,7 @@ import { errDialog, loading } from '../../utils/util'
 const app = getApp();
 Page({
     data: {
-        datalist: [{
-            address: '北京市海淀区海淀黄庄街道海淀中关村大厦15楼',
-            mobile: '18999990000',
-            id: '12322424',
-            name: '用户名'
-        },{
-            address: '北京市海淀区海淀黄庄街道海淀中关村大厦15楼',
-            mobile: '18999990000',
-            id: '12322424',
-            name: '用户名'
-        }],
+        datalist: [],
         isWrite: false,
         isShowNull:true,
         certStatus:0,
@@ -26,17 +16,27 @@ Page({
             this.setData({isWrite: true })
         }
     },
+    onShow: function() {
+        this.getData()
+    },
     getData: function() {
-        service.listStores().subscribe({
+        service.addrlist().subscribe({
             next: res => {
-                this.setData({ datalist: res,isShowNull:res.length!=0 })
+                this.setData({ 
+                    datalist: res.filter(item => item.tel !== null),
+                })
+                this.setData({
+                    isShowNull:this.data.datalist.length!=0 
+                })
             },
             error: err => console.log(err),
             complete: () => wx.hideToast()
         })
     },
-    selectAddress:function() {
+    selectAddress:function(e) {
+        var id = e.currentTarget.dataset.id
         if (!this.data.isWrite) {
+            wx.setStorageSync('selectAddrId', id)
             wx.navigateBack(-1)
         }
     },
@@ -44,24 +44,38 @@ Page({
         var id = e.currentTarget.dataset.id
         wx.navigateTo({ url: '/pages/address/index?id='+id })
     },
+    toDefault: function(e) {
+        var id = e.currentTarget.dataset.id
+        var obj = {id:id}
+        wx.showLoading({ title: '请求中', mask: true });
+        service.addrDefault(obj).subscribe({
+            next: res => {
+                wx.hideLoading()
+                this.getData();
+                wx.showToast({title: '设置成功'})
+            },
+            error: err => errDialog(err),
+            complete: () => wx.hideToast()
+        })
+    },
     toDel:function(e){
-        var id = e.currentTarget.dataset.id;
+        var id = e.currentTarget.dataset.id
         wx.showModal({
             title: '提示',
             content: '确定要删除吗？',
             showCancel: true,
             success: () => {
-                // wx.showLoading({ title: '删除中', mask: true });
-                // var obj = {num:1,storeId:id}
-                // service.applyDevice(obj).subscribe({
-                //     next: res => {
-                //         wx.hideLoading()
-                //         this.getData();
-                //         wx.showToast({title: '设备申请成功',icon:'success'});
-                //     },
-                //     error: err => errDialog(err),
-                //     complete: () => wx.hideToast()
-                // })
+                wx.showLoading({ title: '请求中', mask: true });
+                var obj = {id:id}
+                service.addrDel(obj).subscribe({
+                    next: res => {
+                        wx.hideLoading()
+                        this.getData();
+                        wx.showToast({title: '已删除'})
+                    },
+                    error: err => errDialog(err),
+                    complete: () => wx.hideToast()
+                })
             }
         })
     },

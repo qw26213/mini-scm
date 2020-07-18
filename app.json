@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/login/index",
+    "pages/getuser/index",
     "pages/home/index",
     "pages/detail/index",
     "pages/address/list",
@@ -8,7 +9,7 @@
     "pages/user/index",
     "pages/orderPay/index",
     "pages/orderlist/index",
-    "pages/orderDetail/index",
+    "pages/orderinfo/index",
     "pages/cart/index"
   ],
   "permission": {

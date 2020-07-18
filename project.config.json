@@ -67,29 +67,8 @@
 			"list": [
 				{
 					"id": -1,
-					"name": "pages/detail/index",
-					"pathName": "pages/detail/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/address/index",
-					"pathName": "pages/address/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "pages/user/index",
 					"pathName": "pages/user/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/address/list",
-					"pathName": "pages/address/list",
 					"query": "",
 					"scene": null
 				},
@@ -111,6 +90,14 @@
 					"id": -1,
 					"name": "pages/cart/index",
 					"pathName": "pages/cart/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/address/list",
+					"pathName": "pages/address/list",
+					"query": "",
 					"scene": null
 				}
 			]

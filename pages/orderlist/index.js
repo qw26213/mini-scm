@@ -8,67 +8,43 @@ Page({
         curTabIndex: 0,
         constant: constant,
         isShowNodata: false,
-        orderlist: [{
-            status: 'CREATED',
-            orderItemList: [{
-                productName: '商品名称商品名称商品名称商品名称',
-                merchantName: '商户名称商户名称',
-                price: 36.89,
-            },{
-                productName: '商品名称商品名称商品名称商品名称',
-                merchantName: '商户名称商户名称',
-                price: 36.89,
-            },{
-                productName: '商品名称商品名称商品名称商品名称',
-                merchantName: '商户名称商户名称',
-                price: 36.89,
-            }],
-            amount: 50.00
-        }, {
-            status: 'CREATED',
-            orderItemList: [{
-                productName: '商品名称商品名称商品名称商品名称',
-                merchantName: '商户名称商户名称',
-                price: 36.89,
-            }],
-            amount: 50.00
-        }],
-        pageNo:1,
-        status:'',
-        isFinall:false,
+        orderlist: [],
+        pageIndex: 1,
+        status: '',
+        isFinall: false,
         amount: 0
     },
     onLoad: function(options) {
         wx.hideShareMenu();
-        // this.getData(options.status);
+        this.getData(options.status);
     },
-    toIndex:function(){
-      wx.switchTab({ url: "/pages/index/index" });
+    toIndex: function() {
+        wx.switchTab({ url: "/pages/home/index" });
     },
     toDetail: function(e) {
         var id = e.currentTarget.dataset.id;
         var status = e.currentTarget.dataset.status;
-        wx.navigateTo({ url: "/pages/orderDetail/index?id=" + id });
+        wx.navigateTo({ url: "/pages/orderinfo/index?id=" + id });
     },
     switchTab: function(e) {
         var thisIndex = e.currentTarget.dataset.index
         var thisStatus = e.currentTarget.dataset.status
-        if(thisStatus==this.data.status){return}
+        if (thisStatus == this.data.status) { return }
         this.setData({ curTabIndex: thisIndex, status: thisStatus })
-        // this.setData({ isFinall:false,pageNo: 1,orderlist:[] })
+        // this.setData({ isFinall:false,pageIndex: 1,orderlist:[] })
         // this.getData(thisStatus)
     },
     getData: function(status) {
         var obj = {
             status: status,
-            pageNo: this.data.pageNo,
-            pageSize: 10
+            pageIndex: this.data.pageIndex,
+            pageNum: 5
         }
-        service.orderlist(obj).subscribe({
+        service.orderList(obj).subscribe({
             next: res => {
-                this.setData({ 
-                    orderlist: this.data.orderlist.concat(res.content),
-                    isFinall: res.content.length == 0 ? true : false
+                this.setData({
+                    orderlist: this.data.orderlist.concat(res),
+                    isFinall: res.length == 0 ? true : false
                 });
                 this.setData({ isShowNodata: this.data.orderlist.length == 0 });
             },
@@ -77,22 +53,22 @@ Page({
         })
     },
     //下拉刷新
-    onPullDownRefresh:function() {
-        this.setData({ pageNo: 1 });
+    onPullDownRefresh: function() {
+        this.setData({ pageIndex: 1 });
         this.getData(this.data.status);
     },
     //上拉加载
-    onReachBottom:function() {
-        if(this.data.isFinall){
+    onReachBottom: function() {
+        if (this.data.isFinall) {
             return;
         }
         this.setData({
-            pageNo: this.data.pageNo + 1
+            pageIndex: this.data.pageIndex + 1
         })
         this.getData(this.data.status);
     },
     toPay: function(e) {
-      let that = this;
+        let that = this;
         var payInfo = JSON.parse(e.currentTarget.dataset['pre']);
         wx.requestPayment({
             timeStamp: payInfo.timeStamp,
@@ -103,7 +79,7 @@ Page({
             success(res2) {
                 that.setData({ curTabIndex: 2 });
                 that.getData('PAID');
-                that.setData({ isFinall: false, pageNo: 1 });
+                that.setData({ isFinall: false, pageIndex: 1 });
                 wx.navigateTo({ url: "/pages/orderDetail/index?id=" + e.currentTarget.dataset['id'] });
             },
             fail(res2) {

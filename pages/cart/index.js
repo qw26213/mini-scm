@@ -190,6 +190,13 @@ Page({
         this.getData(this.data.status)
     },
     toPay: function(e) {
-        wx.navigateTo({ url: '/pages/orderPay/index' });
+        if (this.data.amount === 0) {
+            wx.showToast({
+                title: '请勾选商品',
+                icon: 'none'
+            })
+            return
+        }
+        wx.navigateTo({ url: '/pages/orderPay/index' })
     }
 });

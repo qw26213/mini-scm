@@ -13,6 +13,7 @@ Page({
         enterpriseInfo: {},
         selectedId: '',
         productList: [],
+        productInfo: {},
         count: 1,
         buyType: 1,
         isShowSelect: false,
@@ -30,8 +31,15 @@ Page({
         });
     },
     toBuy: function(e) {
+        if (this.data.selectedId === '') {
+            wx.showToast({
+                title: '请选择商品规格',
+                icon: 'none'
+            })
+            return
+        }
         wx.navigateTo({
-            url: '/pages/orderPay/index?referer=0&id=' + this.data.selectedId + '&count=' + this.data.count
+            url: '/pages/orderPay/index?type=1&id=' + this.data.goodsId + '&sid=' + this.data.selectedId + '&count=' + this.data.count
         })
     },
     gocartpage: function() {
@@ -103,9 +111,15 @@ Page({
         this.setData({
             slide_image: [{ attachmentUrl: this.data.productInfo.photoUrl }]
         })
-        console.log(this.data.slide_image)
     },
     saveGoodToCart: function() {
+        if (this.data.selectedId === '') {
+            wx.showToast({
+                title: '请选择商品规格',
+                icon: 'none'
+            })
+            return
+        }
         var obj = {
             goodsId: this.data.goodsId,
             goodsDetailId: this.data.selectedId,
@@ -125,13 +139,6 @@ Page({
             complete: () => {}
         })
     },
-    // 分享
-    toShare: function(e) {
-        var id = e.currentTarget.dataset.id;
-        wx.navigateTo({
-            url: '/pages/detail/index?share=1&referer=0&id=' + id
-        });
-    },
     joinBuy: function() {
         this.setData({ buyType: 2 })
         this.toggleSelect()
@@ -139,6 +146,13 @@ Page({
     joinBus: function() {
         this.setData({ buyType: 1 })
         this.toggleSelect()
+    },
+    onShareAppMessage: function(res) {
+        return {
+            title: this.data.productInfo.itemName,
+            imageUrl: this.data.slide_image[0].attachmentUrl,
+            path: '/pages/login/index?referer=2&id=' + this.data.goodsId + '&shareCode=' + wx.getStorageSync('shareCode')
+        }
     },
     //上拉加载
     onReachBottom: function() {

@@ -8,6 +8,9 @@ var filters = {
     else
       return "0.00"
   },
+  cityFormat: function(value){
+    return value == '上海市' || value == '北京市' || value == '天津市' || value == '重庆市' ? '' : value
+  },
   toInt: function(value){
     return parseInt(value);
   },
@@ -72,6 +75,7 @@ module.exports = {
   toNum: filters.toNum,
   toFix: filters.toFix,
   formatStatus:formatStatus,
+  cityFormat: filters.cityFormat,
   toInt: filters.toInt,
   toDis: filters.toDis,
   toSplitImgs: filters.toSplitImgs,

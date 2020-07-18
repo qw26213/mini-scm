@@ -1,5 +1,5 @@
 <wxs module="filter" src="../../utils/numFr.wxs"></wxs>
-<view class="tablist">
+<view wx:if="{{tablist.length > 0}}" class="tablist">
     <view class="tablist ub ub-ac ub-pj1">
         <view wx:for="{{tablist}}" wx:key="unique" class="tabItem" data-code="{{item.tabCode}}" bindtap="getDataByCode">{{item.tabName}}</view>
     </view>

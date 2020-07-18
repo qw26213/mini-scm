@@ -16,13 +16,6 @@ App({
         // })
     },
     globalData: {
-        locationName: null,
-        userInfo: null,
-        rawData: null,
-        iv: null,
-        signature: null,
-        share: false, // 分享默认为false
-        barHeight: 0,
-        screenHeight: 0
+        userInfo: null
     }
 })

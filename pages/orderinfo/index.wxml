@@ -1,11 +1,7 @@
 <wxs module="filter" src="../../utils/numFr.wxs"></wxs>
-<view wx:if="{{selectedAddr}}" class="addressInfo" bindtap="toPath" data-url="/pages/address/list?type=1">
+<view class="addressInfo" bindtap="toPath" data-url="/pages/address/list?type=1">
     <view class="txt"><text>{{addrInfo.contact}}</text><text style="margin-left:40rpx">{{addrInfo.tel}}</text></view>
-    <view class="txt">{{addrInfo.province}}{{filter.cityFormat(addrInfo.city)}}{{addrInfo.district}}{{addrInfo.addr}}</view>
-    <image src="/images/arrow-right.png" class="arrow-right"></image>
-</view>
-<view wx:else class="addressInfo ub ub-ac btc" bindtap="toPath" data-url="/pages/address/list?type=1">
-    <view class="ub-f1 itemTit">选择收货地址</view>
+    <view class="txt">{{addrInfo.province}}{{addrInfo.city}}{{addrInfo.district}}{{addrInfo.addr}}</view>
     <image src="/images/arrow-right.png" class="arrow-right"></image>
 </view>
 <view class="p15 ub orderItem ub-ac" wx:for="{{ cart_list }}" wx:key="unique">
@@ -21,12 +17,4 @@
             <view class="goodNum">{{item.qty}}</view>
         </view>
     </view>
-</view>
-<view class="btn_bottom ub ub-ac">
-    <view class="ub-f1 plr15">金额：
-        <text class="btnNum">{{ filter.toFix(amount) }}元</text>
-    </view>
-    <form bindsubmit="collectFormIds" report-submit="true">
-        <button form-type="submit" class="btn_common ub-f1 ub ub-ac ub-pc" bindtap="toPay">提交订单</button>
-    </form>
 </view>

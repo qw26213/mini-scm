@@ -1,0 +1,4 @@
+<view class="main ub ub-ver ub-ac ub-pc">
+	<image class="logo" src="/images/logo.png"></image>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" lang="zh_CN" class="ub ub-ac ub-pc">微信登录</button>
+</view>

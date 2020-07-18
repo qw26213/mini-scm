@@ -52,11 +52,7 @@ function setTitle() {
 }
 
 function loading() {
-    wx.showToast({
-        title: '加载中',
-        icon: 'loading',
-        mask: true
-    });
+    wx.showLoading({title: '提交中'})
 }
 
 function errDialog(content) {
@@ -64,20 +60,10 @@ function errDialog(content) {
     wx.showModal({
         title: '温馨提示',
         content: `${content}`,
+        confirmColor: '#c3a769',
         showCancel: false,
         success: function(res) {}
-    });
-}
-
-// 弹框提示
-function showAlert(content) {
-  wx.showModal({
-    title: '温馨提示',
-    content: `${content}`,
-    showCancel: false,
-    confirmText: '确定',
-    confirmColor: '#333'
-  });
+    })
 }
 
 function checkMobile(sMobile) {
@@ -87,6 +73,7 @@ function checkMobile(sMobile) {
         return true;
     }
 }
+
 /**获取路径参数**/
 function getUrlParma(url, name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -121,6 +108,5 @@ module.exports = {
     getUrlParma:getUrlParma,
     checkMobile:checkMobile,
     delBlank:delBlank,
-    showAlert: showAlert,
     formatDate:formatDate
 }
