@@ -4,8 +4,14 @@
         <view wx:for="{{tablist}}" wx:key="unique" class="tabItem" data-code="{{item.tabCode}}" bindtap="getDataByCode">{{item.tabName}}</view>
     </view>
 </view>
+<view class="ub ub-ac w_100 banner">
+    <swiper autoplay circular indicatorDots indicator-color="#ffffff" indicator-active-color="#c3a769">
+        <swiper-item wx:for="{{productList}}" wx:key="unique" wx:if="{{item.fileUrl}}" bindtap="toDetail" data-id="{{item.id}}"><image src="{{item.fileUrl}}" mode="aspectFill"></image></swiper-item>
+    </swiper>
+</view>
+
 <view class="productList" wx:for="{{productList}}" wx:key="unique">
-    <image class="productImg" bindtap="toDetail" data-id="{{item.id}}" lazy-load="true" src="{{item.photoUrl}}" mode="aspectFill"></image>
+    <image class="productImg" bindtap="toDetail" data-id="{{item.id}}" lazy-load="true" src="{{item.fileUrl}}" mode="aspectFill"></image>
     <view class="pro-name" bindtap="toDetail" data-id="{{item.id}}" style="margin-top:8rpx">{{ item.itemName }}</view>
     <view class="price-wrap ub-pj1">
         <view class="price ub-f1">￥{{item.price1}}

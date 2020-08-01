@@ -11,3 +11,6 @@ page{padding-top: 0!important;}
 .count{font-size: 28rpx;color:#999;margin-left:20rpx;}
 
 .buyBtn{background: #c3a769;border-radius:6rpx;color:#fff;margin-left: 20rpx; width: 100rpx;height: 48rpx;padding: 0;text-align: center;line-height: 48rpx;font-size: 24rpx;}
+
+.banner{padding: 0rpx;background-color: #fff;margin-top: 20rpx;}
+.banner image,.banner swiper{border-radius: 10rpx;display: block;width: 100%;height: 400rpx}

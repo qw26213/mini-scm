@@ -109,7 +109,7 @@ Page({
         })
         this.setData({ selectedId: id, productInfo: productInfo })
         this.setData({
-            slide_image: [{ attachmentUrl: this.data.productInfo.photoUrl }]
+            slide_image: [{ attachmentUrl: this.data.productInfo.fileUrl }]
         })
     },
     saveGoodToCart: function() {

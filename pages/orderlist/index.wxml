@@ -8,12 +8,12 @@
     </view> -->
     <view class="main ub-f1 p10">
         <view class="orderItem" wx:for="{{orderlist}}" wx:for-item="item" wx:key="unique">
-            <image class="expire" src="/images/expire.png"></image>
             <view class="ub ub-ac ub-pj top">
-                <view class="status">{{ format.formatStatus(item.status)}}</view>
+                <view class="status">待发货</view>
+                <view class="ub-f1 tx-r" style="font-size:26rpx;color:#999">{{ item.createDate }}</view>
             </view> 
             <view class="ub ub-ac info" bindtap="toDetail" data-id="{{item.orderId}}" data-status="{{item.status}}" wx:for="{{item.salesDetail}}" wx:for-item='it' wx:key="unique">
-                <image class="goodImg udb" src="/images/pp1.png" mode="aspectFill"></image>
+                <image class="goodImg udb" src="{{item.fileUrl}}" mode="aspectFill"></image>
                 <view class="ub-f1 goodMsg">
                     <view class="goodTit">{{format.toEllipsis(it.itemName)}}</view>
                     <view class="storeName">{{it.merchantName}}</view>
@@ -22,11 +22,6 @@
             </view>
             <view class="tx-r total" wx:if="{{item.status=='CREATED'||item.status=='CLOSE'}}">
               合计：<text>{{format.toFix(item.qty)}}元</text>
-            </view>
-            <view class="ctrl plr15 ub ub-ac ub-pj" wx:if="{{item.status=='PAID'||item.status=='CREATED'||item.status=='CONSUME'}}">
-                <view wx:if="{{item.status=='PAID'}}" class="left">您已成功付款，请到店展示消费码消费</view>
-                <view wx:if="{{item.status=='CREATED'}}" class="left">请在下单后5分钟内付款，超时将自动关闭</view>
-                <view wx:if="{{item.status=='CREATED'}}" class="pay" bindtap="toPay" data-id="{{item.orderId}}" data-pre="{{item.preOrderStr}}">立即付款</view>
             </view>
         </view>
         <view class="nodataDiv ub ub-ac ub-ver" hidden="{{!isShowNodata}}">

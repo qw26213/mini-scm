@@ -3,7 +3,7 @@
     <view class="swiper-wrap">
         <swiper class="img-wrap" autoplay="true" interval="3000">
             <swiper-item wx:for="{{slide_image}}" wx:key="unique">
-                <image class="slide-image" lazy-load="true" src="{{item.attachmentUrl}}" mode="aspectFill"></image>
+                <image class="slide-image" lazy-load="true" src="{{item.fileUrl}}" mode="aspectFill"></image>
             </swiper-item>
         </swiper>
     </view>
@@ -26,7 +26,7 @@
         </view>
     </view>
     <view class="proInduction">
-        <image class="productImg" wx:for="{{content_image}}" wx:key="unique" src="{{item.attachmentUrl}}" mode="widthFix"></image>
+        <image class="productImg" wx:for="{{content_image}}" wx:key="unique" src="{{item.fileUrl}}" mode="widthFix"></image>
     </view>
     <view class="selectWrap" hidden="{{!isShowSelect}}" bindtap="toggleSelect"></view>
     <view class="ub ub-ver selectModal" hidden="{{!isShowSelect}}">

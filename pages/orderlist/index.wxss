@@ -8,7 +8,7 @@ page{box-sizing:border-box;height: 100%;background-color: #fbfbfb}
 
 .orderItem{background-color: #fff;position:relative;border-radius: 8rpx;overflow: hidden;margin-bottom: 20rpx;position: relative;}
 .orderItem .top{height: 88rpx;border-bottom: 1rpx #eee solid;padding-left: 30rpx;padding-right: 30rpx;}
-.orderItem .top .status{font-size: 30rpx;color: #333;font-weight: bold}
+.orderItem .top .status{font-size: 28rpx;color: #333;font-weight: bold}
 .orderItem .top .restTime{font-size: 24rpx;color: #999;}
 .orderItem .info{padding: 20rpx;padding-bottom: 0}
 .orderItem .total{font-size: 24rpx;color: #333;padding-right: 30rpx;padding-top:30rpx;padding-bottom:40rpx;}

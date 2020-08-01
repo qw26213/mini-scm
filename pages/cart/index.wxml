@@ -3,7 +3,7 @@
     <view class="ub ub-ac wrap {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart='touchStart' bindtouchmove='touchmove'>
         <view class="ub orderItem content ub-ac">
             <checkbox value="cb" checked="{{ item.checked }}" color="#c3a769" data-index="{{index}}" bindtap="switchChecked" />
-            <image class="goodImg udb" src="/images/pp1.png" lazy-load="true" mode="aspectFill"></image>
+            <image class="goodImg udb" src="{{item.fileUrl}}" lazy-load="true" mode="aspectFill"></image>
             <view class="ub ub-ver ub-pj goodMsg">
                 <view>
                     <view class="goodTit">{{item.itemName}}</view>

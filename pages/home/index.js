@@ -9,6 +9,7 @@ Page({
         tabCode: '0',
         locationName: '',
         productList: [],
+        imglist: [],
         isFinall: false,
         isShowNodata: false
     },
@@ -42,7 +43,6 @@ Page({
         })
     },
     getData: function() {
-        console.log('get productlist------------')
         service.productlist({tabCode: this.data.tabCode}).subscribe({
             next: res => {
                 const result = res || []
@@ -51,6 +51,8 @@ Page({
                     isFinall: result.length == 0 ? true : false
                 });
                 this.setData({ isShowNodata: this.data.productList.length == 0 });
+                const imglist = this.data.productList.filter(item => item.isRotate === 1)
+                this.setData({imglist: imglist})
             },
             error: err => errDialog(err),
             complete: () => wx.hideToast()
