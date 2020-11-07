@@ -143,13 +143,5 @@ Page({
             imageUrl: this.data.slide_image[0].attachmentUrl,
             path: '/pages/login/index?referer=2&id=' + this.data.goodsId + '&shareCode=' + wx.getStorageSync('shareCode')
         }
-    },
-    //上拉加载
-    onReachBottom: function() {
-
-    },
-    //下拉刷新
-    onPullDownRefresh: function() {
-
     }
 })
