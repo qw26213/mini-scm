@@ -43,7 +43,7 @@ Page({
         })
     },
     getData: function() {
-        service.productlist({tabCode: this.data.tabCode}).subscribe({
+        service.productlist({tabCode: this.data.tabCode, isDisable: 0 }).subscribe({
             next: res => {
                 const result = res || []
                 this.setData({ 

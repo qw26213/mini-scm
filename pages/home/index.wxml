@@ -1,7 +1,7 @@
 <wxs module="filter" src="../../utils/numFr.wxs"></wxs>
 <view wx:if="{{tablist.length > 0}}" class="tablist">
     <view class="tablist ub ub-ac ub-pj1">
-        <view wx:for="{{tablist}}" wx:key="unique" class="tabItem" data-code="{{item.tabCode}}" bindtap="getDataByCode">{{item.tabName}}</view>
+        <view wx:for="{{tablist}}" wx:key="unique" class="tabItem {{item.tabCode==tabCode?'on':''}}" data-code="{{item.tabCode}}" bindtap="getDataByCode">{{item.tabName}}</view>
     </view>
 </view>
 <view class="ub ub-ac w_100 banner">

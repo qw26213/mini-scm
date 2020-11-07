@@ -1,12 +1,12 @@
 <wxs module="filter" src="../../utils/numFr.wxs"></wxs>
-<block wx:for='{{cart_list}}' wx:key="index">
+<block wx:for='{{cart_list}}' wx:key="unique">
     <view class="ub ub-ac wrap {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart='touchStart' bindtouchmove='touchmove'>
         <view class="ub orderItem content ub-ac">
             <checkbox value="cb" checked="{{ item.checked }}" color="#c3a769" data-index="{{index}}" bindtap="switchChecked" />
-            <image class="goodImg udb" src="{{item.fileUrl}}" lazy-load="true" mode="aspectFill"></image>
+            <image class="goodImg udb" src="{{ item.fileUrl }}" lazy-load="true" mode="aspectFill"></image>
             <view class="ub ub-ver ub-pj goodMsg">
                 <view>
-                    <view class="goodTit">{{item.itemName}}</view>
+                    <view class="goodTit">{{ item.itemName }}</view>
                     <view class="skuName">规格：{{ item.norms }}</view>
                     <view class="goodPrice">单价：{{filter.toFix(item.price) }}元</view>
                 </view>
@@ -24,7 +24,7 @@
     </view>
 </block>
 <confirmBox hideConfirmModal="{{hideConfirmModal}}" confirmBoxTitle="提示" confirmBoxContent="确认删除吗？" bind:clickConfirmBtn="delOrder"></confirmBox>
-<view class="btn_bottom ub ub-ac">
+<view wx:for='{{cart_list.length > 0}}' wx:key="unique" class="btn_bottom ub ub-ac">
     <view class="plr15 ub ub-ac">
         <checkbox value="cb" checked="{{ allChecked }}" color="#c3a769" bindtap="allCheck" /><text class="uu">全选</text>
     </view>
@@ -34,4 +34,11 @@
     <form bindsubmit="collectFormIds" report-submit="true">
         <button form-type="submit" class="btn_common ub-f1 ub ub-ac ub-pc" bindtap="toPay">结算</button>
     </form>
+</view>
+<view class="nodataDiv ub ub-ac ub-ver" hidden="{{!isShowNodata}}">
+    <image class="nodataImg" src="/images/null2.png"></image>
+    <view class="nodataTxt">
+      <view>空空如也~</view>
+      <view style="font-size:24rpx;color:#999;margin-top:20rpx;" bindtap="toIndex">去首页逛逛吧</view>
+    </view>
 </view>

@@ -38,45 +38,18 @@ Page({
         if (!this.data.isWrite) {
             wx.setStorageSync('selectAddrId', id)
             wx.navigateBack(-1)
+            this.setDefault(id)
+        } else {
+            wx.navigateTo({ url: '/pages/address/index?id='+id })
         }
     },
-    toModify:function(e){
-        var id = e.currentTarget.dataset.id
-        wx.navigateTo({ url: '/pages/address/index?id='+id })
-    },
-    toDefault: function(e) {
-        var id = e.currentTarget.dataset.id
-        var obj = {id:id}
-        wx.showLoading({ title: '请求中', mask: true });
-        service.addrDefault(obj).subscribe({
+    setDefault: function(id) {
+        service.addrDefault({id}).subscribe({
             next: res => {
-                wx.hideLoading()
-                this.getData();
-                wx.showToast({title: '设置成功'})
+                console.log('默认地址ok')
             },
             error: err => errDialog(err),
             complete: () => wx.hideToast()
-        })
-    },
-    toDel:function(e){
-        var id = e.currentTarget.dataset.id
-        wx.showModal({
-            title: '提示',
-            content: '确定要删除吗？',
-            showCancel: true,
-            success: () => {
-                wx.showLoading({ title: '请求中', mask: true });
-                var obj = {id:id}
-                service.addrDel(obj).subscribe({
-                    next: res => {
-                        wx.hideLoading()
-                        this.getData();
-                        wx.showToast({title: '已删除'})
-                    },
-                    error: err => errDialog(err),
-                    complete: () => wx.hideToast()
-                })
-            }
         })
     },
     toAdd: function(){

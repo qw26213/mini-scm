@@ -2,12 +2,12 @@
 <view class="cell plr15 ub ub-ac">
     <view class="tit">
         <text class="red">*</text>收货人</view>
-    <input class="ub-f1 tx-r" type="text" value="{{contact}}" bindinput="bindInput1" placeholder="联系人姓名" />
+    <input class="ub-f1 tx-r" type="text" value="{{contact}}" bindinput="bindInput1" placeholder="收货人姓名" />
 </view>
 <view class="cell plr15 ub ub-ac btc">
     <view class="tit">
         <text class="red">*</text>手机号码</view>
-    <input class="ub-f1 tx-r" type="text" value="{{tel}}" bindinput="bindInput2" placeholder="联系人电话" />
+    <input class="ub-f1 tx-r" type="text" value="{{tel}}" bindinput="bindInput2" placeholder="收货人电话" />
 </view>
 <view class="cell plr15 ub ub-ac btc">
     <view class="tit"><text class="red">*</text>所在地区</view>
@@ -29,5 +29,6 @@
     </view>
 </view>
 <view class="mt30 plr20">
-    <button form-type="submit" role="button" aria-disabled="false" bindtap="addrSave" data-type="1">确认添加</button>
+    <button form-type="submit" role="button" aria-disabled="false" bindtap="saveData">保存地址</button>
+    <button wx:if="{{!!id}}" class="del" bindtap="delData" style="margin-top:20rpx">删除地址</button>
 </view>

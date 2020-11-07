@@ -37,4 +37,5 @@ checkbox .wx-checkbox-input { width: 36rpx; height: 36rpx; border-radius: 36rpx;
   -webkit-transform: translateX(0);
   transform: translateX(0);
 }
+.nodataDiv{padding-top: 260rpx;}
 

@@ -10,7 +10,7 @@
     <view class="prodrctInfo">
         <view class="productname ub ub-ac">
             <view class="ub-f1">{{ productInfo.itemName }}</view>
-            <image class="shareIcon" bindtap="toShare" data-id="{{productInfo.id}}" src="/images/icon_ping.png"></image>
+            <button class="shareIcon" open-type="share"><image class="shareIcon" bindtap="toShare" data-id="{{productInfo.id}}" src="/images/icon-share.png"></image></button>
         </view>
         <view class="productCount ub ub-ac">
             <view class="price ub-f1">￥{{ productInfo.price1 ? productInfo.price1 : productInfo.price }}</view>
@@ -50,11 +50,11 @@
     <view class="footer ub ub-ac">
         <view class="ub" style="width:220rpx" open-type='contact' session-from='weapp'>
             <button class="smallBtn ub-f1 ub ub-ver ub-ac">
-                <image class="small_icon" src="/images/icon_ping.png" />
+                <image class="small_icon" src="/images/icon_my5.png" />
                 <view class="tx-c small_txt">客服</view>
             </button>
             <button class="smallBtn ub-f1 ub ub-ver ub-ac" style="border-left:1rpx #e9e9e9 solid" bindtap="gocartpage">
-                <image class="small_icon" src="/images/icon_ping.png" />
+                <image class="small_icon" src="/images/icon_my6.png" />
                 <view class="tx-c small_txt">购物车</view>
             </button>
         </view>

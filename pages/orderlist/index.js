@@ -44,7 +44,7 @@ Page({
             next: res => {
                 this.setData({
                     orderlist: this.data.orderlist.concat(res),
-                    isFinall: res.length == 0 ? true : false
+                    isFinall: res.length < 5 ? true : false
                 });
                 this.setData({ isShowNodata: this.data.orderlist.length == 0 });
             },

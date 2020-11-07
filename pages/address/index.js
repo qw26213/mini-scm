@@ -14,7 +14,7 @@ Page({
         wx.showShareMenu({ withShareTicket: true })
         if (options.id) {
             this.setData({id:options.id})
-            wx.setNavigationBarTitle({title: '编辑地址'})
+            wx.setNavigationBarTitle({title: '编辑收货地址'})
             service.addrGet({id: options.id}).subscribe({
                 next: res => {
                     this.setData({
@@ -28,7 +28,7 @@ Page({
                 complete: () => wx.hideToast()
             })
         } else {
-            wx.setNavigationBarTitle({title: '添加地址'})
+            wx.setNavigationBarTitle({title: '新增收货地址'})
         }
     },
     toDetail: function(e) {
@@ -53,8 +53,33 @@ Page({
     bindInput3: function(e) {
         this.setData({addr: e.detail.value})
     },
-    //下拉刷新
-    addrSave: function() {
+    delData: function(){
+        var id = this.data.id
+        wx.showModal({
+            title: '提示',
+            content: '确定要删除吗？',
+            confirmColor: '#c3a769',
+            showCancel: true,
+            success: (res) => {
+                if (res.confirm) {
+                    wx.showLoading({ title: '删除中', mask: true });
+                    var obj = {id:id}
+                    service.addrDel(obj).subscribe({
+                        next: res => {
+                            wx.hideLoading()
+                            wx.showToast({title: '已删除'})
+                            setTimeout(() => {
+                                wx.navigateBack()
+                            }, 1500)
+                        },
+                        error: err => errDialog(err),
+                        complete: () => wx.hideToast()
+                    })
+                }
+            }
+        })
+    },
+    saveData: function() {
         const data = {
             id: this.data.id,
             contact: this.data.contact,

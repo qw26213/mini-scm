@@ -1,4 +1,4 @@
-.toper { background-color: #c3a769;height:220rpx;padding-bottom: 60rpx;position: relative;}
+.toper { background-color: #c3a769;height:200rpx;padding-bottom: 30rpx;position: relative; margin-bottom: 20rpx;}
 .toper view{color:#fff;}
 .toper .txt{color: #fff;font-size: 26rpx;}
 .btn{width: 120rpx;height: 48rpx;color: #c3a769;border:2rpx #c3a769 solid;border-radius: 8rpx;font-size:24rpx;}
@@ -16,9 +16,9 @@
 .userImg { width: 120rpx; height: 120rpx; }
 
 .userstatus{width:100rpx;height:30rpx;background:#000;border-radius:15rpx;margin-left:12rpx;text-align: center;line-height: 30rpx;font-size:22rpx;color: #fff; opacity: 0.2;}
-.item{background-color: #fff;position:relative;overflow: hidden;position: relative;height: 88rpx}
-.icon_cell{display: block;width: 36rpx;height: 36rpx;margin-right: 10rpx}
-.itemTit{font-size: 28rpx;color:#333;}
+.item{background-color: #fff;position:relative;overflow: hidden;position: relative;height: 96rpx}
+.icon_cell{display: block;width: 48rpx;height: 48rpx;margin-right: 10rpx}
+.itemTit{font-size: 28rpx;color:#666;}
 .btc{border-top:1rpx #eee solid;}
 .brt10{border-radius: 10rpx 10rpx 0 0}
 .brb10{border-radius: 0 0 10rpx 10rpx}
@@ -28,5 +28,5 @@
 .switch{background-color:#ffffff;color:#333;display:block;margin-left:auto;margin-right:auto;font-size:18px;text-align:center;text-decoration:none;line-height:2.5;border-radius:5px;}
 .switch:after{border:none;}
 .sw{display: inline-block;vertical-align: middle;width: 32rpx;height: 32rpx;margin-right: 10rpx;margin-top: -5rpx}
-.kefu {background: #fff; color: #333;border:#fff 1rpx solid;padding:20rpx;text-align:left}
+.kefu {background: #fff; color: #333;text-align:left;height: 96rpx}
 .kefu::after {border: 0;}

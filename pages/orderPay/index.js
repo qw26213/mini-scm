@@ -88,6 +88,10 @@ Page({
         wx.navigateTo({ url: url });
     },
     toPay: function(e) {
+        if (Object.keys(addrInfo).length === 0) {
+            errDialog('请选择收货地址!')
+            return
+        }
         var obj = {
             salesDetail: this.data.cart_list.map(item => {
                 return {

@@ -4,27 +4,14 @@ import { errDialog, loading } from '../../utils/util';
 var app = getApp();
 Page({
     data: {
-        cart_list: [{
-            productName: '商品名称111111111111111',
-            skuName: '规格1',
-            price: 30,
-            qty: 1,
-            checked: false,
-            isTouchMove: false
-        }, {
-            productName: '商品名称222222222222222',
-            skuName: '规格1',
-            price: 50,
-            qty: 1,
-            checked: false,
-            isTouchMove: false
-        }],
+        cart_list: [],
         hideConfirmModal: true,
         card_id: '',
         curIndex: 0,
         startX: 0,
         startY: 0,
         allChecked: false,
+        isShowNodata: false,
         amount: 0
     },
     touchStart(e) { //移动前点击的位置
@@ -84,6 +71,9 @@ Page({
             curIndex: e.currentTarget.dataset.index
         })
     },
+    toIndex: function() {
+        wx.switchTab({ url: "/pages/home/index" });
+    },
     delOrder: function() {
         service.cartdel({ detailId: this.data.card_id }).subscribe({
             next: res => {
@@ -91,6 +81,7 @@ Page({
                 let aa = this.data.cart_list
                 aa.splice(index, 1)
                 this.setData({ cart_list: aa, hideConfirmModal: true })
+                this.setData({ isShowNodata: this.data.cart_list.length == 0 })
             },
             error: err => errDialog(err),
             complete: () => wx.hideToast()
@@ -120,8 +111,12 @@ Page({
             next: res => {
                 this.setData({ cart_list: res || [] })
                 this.getAmount()
+                this.setData({ isShowNodata: this.data.cart_list.length == 0 });
             },
-            error: err => errDialog(err),
+            error: err => {
+                errDialog(err)
+                this.setData({ isShowNodata: true });
+            },
             complete: () => wx.hideToast()
         })
     },

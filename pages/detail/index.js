@@ -56,16 +56,6 @@ Page({
         this.setData({ count: result })
     },
     getData: function(id) {
-        // service.productDetail({ headerId: id }).subscribe({
-        //     next: res => {
-        //         const result = res[0] || {}
-        //         this.setData({ 
-        //             productInfo: result
-        //         })
-        //     },
-        //     error: err => errDialog(err),
-        //     complete: () => wx.hideToast()
-        // })
         service.goodsAttachment({ headerId: id }).subscribe({
             next: res => {
                 const result = res[0] || {}

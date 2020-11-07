@@ -1,20 +1,14 @@
 <view class="item plr10" wx:for="{{datalist}}" wx:for-item="item" wx:key="unique" style="padding-top:10rpx">
 	<view class="addressInfo" bindtap="selectAddress" data-id="{{item.id}}">
-        <view class="txt"><text>{{item.contact}}</text><text style="margin-left:40rpx">{{item.tel}}</text><text wx:if="{{item.isDefault}}">(默认)</text></view>
+        <view class="txt" style="font-weight:bold"><text>{{item.contact}}</text><text style="margin-left:40rpx">{{item.tel}}</text><text wx:if="{{item.isDefault}}">(默认)</text></view>
         <view class="txt">{{item.province}}{{filter.cityFormat(addrInfo.city)}}{{item.district}}{{item.addr}}</view>
-        <image wx:if="{{!isWrite}}" src="/images/arrow-right.png" class="arrow-right"></image>
+        <image src="/images/arrow-right.png" class="arrow-right"></image>
 	</view>
-    <view class="ub ub-ac bottom" wx:if="{{isWrite}}">
-        <button wx:if="{{!item.isDefault}}" class="compile" size="mini" style="width:130rpx" bindtap="toDefault" data-id="{{item.id}}">设为默认</button>
-        <view class="ub-f1"></view>
-        <button class="compile" size="mini" bindtap="toModify" data-id="{{item.id}}">编辑</button>
-        <button class="del" size="mini" bindtap="toDel" data-id="{{item.id}}">删除</button>
-    </view>
 </view>
 <view class="ub ub-ac ub-ver noneDiv" hidden="{{isShowNull}}">
     <image class="nodataImg" src="/images/null2.png"></image>
-    <view class="nodataTxt">你还没添加任何地址</view>
+    <view class="nodataTxt">还没添加任何地址~</view>
 </view>
-<view class="plr15 mt30" wx:if="{{isWrite}}">
-    <button form-type="submit" class="add" role="button" aria-disabled="false" bindtap="toAdd">添加地址</button>
+<view class="btn-add" wx:if="{{isWrite}}">
+    <button form-type="submit" class="add" role="button" aria-disabled="false" bindtap="toAdd">新增收货地址</button>
 </view>

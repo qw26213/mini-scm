@@ -4,7 +4,9 @@
 .cell input{font-size:28rpx;color:#333;}
 .red{color:#f00;}
 
-.textarea{font-size: 26rpx;color: #333;height: 160rpx;line-height: 48rpx;}
+.textarea{font-size: 26rpx;color: #333;height: 120rpx;line-height: 48rpx;width:100%}
+
+button.del{background-color: #f3eee1;color: #c3a769;}
 
 button{background-color: #c3a769;font-size: 32rpx;color: #fff}
 .picker{color:#333;font-size:28rpx;}
