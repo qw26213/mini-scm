@@ -8,7 +8,8 @@ Page({
         contact: '',
         tel: '',
         region: [],
-        addr: ''
+        addr: '',
+        switch1Checked: false
     },
     onLoad: function(options) {
         wx.showShareMenu({ withShareTicket: true })
@@ -43,6 +44,9 @@ Page({
         this.setData({
             region: e.detail.value
         })
+    },
+    switch1Change: function() {
+        
     },
     bindInput1: function(e) {
         this.setData({contact: e.detail.value})

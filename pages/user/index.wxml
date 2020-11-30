@@ -1,8 +1,9 @@
-<view class="toper plr15 ub ub-ac">
-    <view class="userDiv" bindtap="toPath" data-url="/pages/account/index">
+<view class="toper ub ub-ac">
+    <view class="userDiv">
         <open-data type="userAvatarUrl" class="userImg udb"></open-data>
     </view>
-    <view class="txt" bindtap="toPath" data-url="/pages/account/index"><open-data type="userNickName" lang="zh_CN"></open-data></view>
+    <view class="txt ub-f1"><open-data type="userNickName" lang="zh_CN"></open-data></view>
+    <div class="rankbtn" bindtap="toPath" data-url="/pages/usrinfo/index">编辑</div>
 </view>
 
 <view class="item ub ub-ac plr15 brt10" bindtap="toPath" data-url="/pages/orderlist/index">

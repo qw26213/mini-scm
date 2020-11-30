@@ -1,9 +1,10 @@
 page{padding-top:1px;box-sizing:border-box;}
-.item{background-color: #fff;position:relative;border-radius: 8rpx;overflow: hidden;margin-top: 20rpx;position: relative;}
-.addressInfo{padding: 16rpx 20rpx;position: relative;}
+.content{background-color: #fff;position:relative;border-radius: 8rpx;overflow: hidden;position: relative;}
+.addressInfo{padding: 16rpx 20rpx;position: relative;border-bottom:1px #eee solid;}
+.addressInfo:last-child{border-bottom: none;}
 .arrow-right{position: absolute;top: 50%;right: 20rpx;margin-top: -12rpx}
-.item .txt{font-size: 26rpx;color: #333; line-height: 44rpx}
-.item .orderTime{font-size: 26rpx;color: #999;}
+.content .txt{font-size: 26rpx;color: #333; line-height: 44rpx}
+.content .orderTime{font-size: 26rpx;color: #999;}
 .storeTit{font-size: 28rpx;color:#333;}
 .bottom{border-top:1rpx #eee solid;padding: 18rpx}
 .noneDiv{padding-top:100rpx}
@@ -11,3 +12,4 @@ button.compile{background-color: #c3a769;font-size: 32rpx;color: #fff;width: 80r
 
 .btn-add{position: fixed;left: 0;bottom: 0;width: 100%;}
 button.add{background-color: #c3a769;font-size: 32rpx;color: #fff;width: 100%;height: 96rpx;border-radius: 0;line-height: 96rpx;}
+.tit{font-size:28rpx;color:#333;margin-top:60rpx;padding-left:30rpx;line-height:46rpx;}

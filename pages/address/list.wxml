@@ -1,14 +1,40 @@
-<view class="item plr10" wx:for="{{datalist}}" wx:for-item="item" wx:key="unique" style="padding-top:10rpx">
+<view class="content plr10" wx:for="{{datalist}}" wx:for-item="item" wx:key="unique" style="padding-top:10rpx;margin-top: 20rpx;">
 	<view class="addressInfo" bindtap="selectAddress" data-id="{{item.id}}">
-        <view class="txt" style="font-weight:bold"><text>{{item.contact}}</text><text style="margin-left:40rpx">{{item.tel}}</text><text wx:if="{{item.isDefault}}">(默认)</text></view>
+        <view class="txt" style="font-weight:bold">
+            <text>{{ item.contact }}</text>
+            <text style="margin-left:40rpx">{{ item.tel }}</text>
+            <text wx:if="{{item.isDefault}}">(默认)</text>
+        </view>
         <view class="txt">{{item.province}}{{filter.cityFormat(addrInfo.city)}}{{item.district}}{{item.addr}}</view>
         <image src="/images/arrow-right.png" class="arrow-right"></image>
 	</view>
 </view>
+
 <view class="ub ub-ac ub-ver noneDiv" hidden="{{isShowNull}}">
     <image class="nodataImg" src="/images/null2.png"></image>
     <view class="nodataTxt">还没添加任何地址~</view>
 </view>
+
 <view class="btn-add" wx:if="{{isWrite}}">
     <button form-type="submit" class="add" role="button" aria-disabled="false" bindtap="toAdd">新增收货地址</button>
 </view>
+
+<view wx:if="{{ !isWrite }}" class="tit">代收驿站</view>
+<view wx:if="{{ !isWrite }}" class="content plr10" style="padding-top:10rpx">
+	<view class="addressInfo">
+        <view class="txt" style="font-weight:bold"><text>王红果</text><text style="margin-left:40rpx">15011532730</text></view>
+        <view class="txt">北京大道25号国美超市一楼服务处</view>
+        <image src="/images/arrow-right.png" class="arrow-right"></image>
+	</view>
+	<view class="addressInfo">
+        <view class="txt" style="font-weight:bold"><text>王红果</text><text style="margin-left:40rpx">15011532730</text></view>
+        <view class="txt">北京大道25号国美超市一楼服务处</view>
+        <image src="/images/arrow-right.png" class="arrow-right"></image>
+	</view>
+	<view class="addressInfo">
+        <view class="txt" style="font-weight:bold"><text>王红果</text><text style="margin-left:40rpx">15011532730</text></view>
+        <view class="txt">北京大道25号国美超市一楼服务处</view>
+        <image src="/images/arrow-right.png" class="arrow-right"></image>
+	</view>
+</view>
+

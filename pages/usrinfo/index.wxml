@@ -1,0 +1,26 @@
+<view class="main">
+    <view class="cell plr15 ub ub-ac">
+        <view class="tit">用户名<text class="red">*</text></view>
+        <input class="ub-f1 tx-r" type="text" :value="name" bindinput="bindInput0" placeholder="请输入用户名" />
+    </view>
+    <view class="cell plr15 ub ub-ac btc">
+        <view class="tit">手机号<text class="red">*</text></view>
+        <input class="ub-f1 tx-r" type="number" :value="mobile" bindinput="bindInput1" placeholder="请输入手机号" />
+    </view>
+    <view class="cell plr15 ub ub-ac btc">
+        <view class="tit">短信验证码<text class="red">*</text></view>
+        <input class="ub-f1 tx-r brc" type="number" :value="code" bindinput="bindInput2" placeholder="请输入验证码" />
+        <view wx:if="{{showTime}}" class="codeBtn">{{count}}秒</view>
+        <view wx:else class="codeBtn" bindtap="getCode">获取验证码</view>
+    </view>
+    <view class="cell plr15 ub ub-ac btc">
+        <view class="tit">选择居住地址<text class="red">*</text></view>
+        <view class="ub-f1 tx-r ub ub-ac ub-pe" style="height:80rpx" bindtap="chooseLocal">
+            {{ loctionName }}
+            <image src="/images/arrow-right.png" class="arrow-right"></image>
+        </view>
+    </view>
+</view>
+<view class="mt30 plr20">
+    <button form-type="submit" class="submit" aria-disabled="false" bindtap="submit">保存</button>
+</view>

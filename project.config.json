@@ -37,7 +37,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.3.0",
   "appid": "wxdc714567e5ecfaa5",
-  "projectname": "mini-scm",
+  "projectname": "丰扬分销",
   "debugOptions": {
     "hidedInDevtools": []
   },
@@ -76,13 +76,6 @@
         },
         {
           "id": -1,
-          "name": "pages/orderlist/index",
-          "pathName": "pages/orderlist/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "id": -1,
           "name": "pages/orderPay/index",
           "pathName": "pages/orderPay/index",
           "query": "",
@@ -106,6 +99,14 @@
           "id": -1,
           "name": "pages/user/index",
           "pathName": "pages/user/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "pages/orderPay/index",
+          "pathName": "pages/orderPay/index",
+          "query": "id=1207422711911936000&sid=1270110281321672704&count=2",
           "scene": null
         }
       ]

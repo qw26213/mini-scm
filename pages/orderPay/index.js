@@ -88,7 +88,7 @@ Page({
         wx.navigateTo({ url: url });
     },
     toPay: function(e) {
-        if (Object.keys(addrInfo).length === 0) {
+        if (Object.keys(this.data.addrInfo).length === 0) {
             errDialog('请选择收货地址!')
             return
         }

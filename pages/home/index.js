@@ -60,7 +60,7 @@ Page({
     },
     onShareAppMessage: function(res) {
         return {
-            title: '快销在线，生活的好帮手',
+            title: '丰扬分销，生活的好帮手',
             imageUrl: '/images/shareImg.png',
             path: '/pages/login/index?referer=1&shareCode=' + wx.getStorageSync('shareCode')
         }

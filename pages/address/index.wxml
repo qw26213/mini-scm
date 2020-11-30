@@ -22,12 +22,38 @@
         </view>
     </picker>
 </view>
-<view class="bgb plr15 ub ub-ver btc">
+<view class="cell plr15 ub ub-ac btc">
+    <view class="tit">
+        <text class="red">*</text>详细地址</view>
+    <input class="ub-f1 tx-r" type="text" value="{{ addr }}" bindinput="bindInput2" placeholder="详细地址" />
+</view>
+
+<!-- <view class="bgb plr15 ub ub-ver btc">
     <view class="cell tit ub ub-ac"><text class="red">*</text>详细地址</view>
     <view class="udb">
         <textarea value="{{addr}}" class="textarea" placeholder="详细地址（具体到门牌号）" bindinput="bindInput3" placeholder-style=""></textarea>
     </view>
+</view> -->
+<view class="cell plr15 ub ub-ac btc">
+    <view class="tit"><text class="red">*</text>是否自提</view>
+    <switch checked="{{switch1Checked}}" bindchange="switch1Change"/>
 </view>
+<view hidden="{{!switch1Checked}}" class="cell plr15 ub ub-ac">
+    <view class="tit">
+        <text class="red">*</text>自提收货人</view>
+    <input class="ub-f1 tx-r" type="text" value="{{contact}}" bindinput="bindInput1" placeholder="收货人姓名" />
+</view>
+<view hidden="{{!switch1Checked}}" class="cell plr15 ub ub-ac btc">
+    <view class="tit">
+        <text class="red">*</text>自提手机号码</view>
+    <input class="ub-f1 tx-r" type="text" value="{{tel}}" bindinput="bindInput2" placeholder="收货人电话" />
+</view>
+<view hidden="{{!switch1Checked}}" class="cell plr15 ub ub-ac btc">
+    <view class="tit">
+        <text class="red">*</text>自提详细地址</view>
+    <input class="ub-f1 tx-r" type="text" value="{{ addr }}" bindinput="bindInput2" placeholder="详细地址" />
+</view>
+
 <view class="mt30 plr20">
     <button form-type="submit" role="button" aria-disabled="false" bindtap="saveData">保存地址</button>
     <button wx:if="{{!!id}}" class="del" bindtap="delData" style="margin-top:20rpx">删除地址</button>

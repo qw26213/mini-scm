@@ -1,0 +1,35 @@
+.cell {
+    height: 100rpx;
+    background: #fff;
+}
+
+.tit {
+    font-size: 28rpx;
+    color: #333;
+    margin-right: 20rpx;
+}
+
+.cell input {
+    font-size: 28rpx;
+    color: #333;
+}
+
+label {
+    font-size: 26rpx;
+    color: #333;
+}
+.arrow-right{display: inline-block;}
+.brc{border-right: 2rpx #eee solid;padding-right: 10rpx;}
+.codeBtn {
+    width: 150rpx;
+    color: #333;
+    font-size: 24rpx;
+    text-align: center;
+    padding: 6rpx 12rpx;
+    background-color: #e2e2e2;
+    border-radius: 6rpx;
+    margin-left: 12rpx;
+}
+
+button.submit{background-color: #c3a769;font-size: 32rpx;color: #fff}
+.red{color:#f00}
