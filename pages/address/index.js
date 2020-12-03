@@ -9,7 +9,10 @@ Page({
         tel: '',
         region: [],
         addr: '',
-        switch1Checked: false
+        isDelivery: false,
+        custContact: '',
+        custTel: '',
+        custAddr: ''
     },
     onLoad: function(options) {
         wx.showShareMenu({ withShareTicket: true })
@@ -46,7 +49,7 @@ Page({
         })
     },
     switch1Change: function() {
-        
+        this.setData({ isDelivery: !this.data.isDelivery })
     },
     bindInput1: function(e) {
         this.setData({contact: e.detail.value})
@@ -56,6 +59,15 @@ Page({
     },
     bindInput3: function(e) {
         this.setData({addr: e.detail.value})
+    },
+    bindInput4: function(e) {
+        this.setData({custContact: e.detail.value})
+    },
+    bindInput5: function(e) {
+        this.setData({custTel: e.detail.value})
+    },
+    bindInput6: function(e) {
+        this.setData({custAddr: e.detail.value})
     },
     delData: function(){
         var id = this.data.id
@@ -91,7 +103,11 @@ Page({
             addr: this.data.addr,
             province: this.data.region[0],
             city: this.data.region[1],
-            district: this.data.region[2]
+            district: this.data.region[2],
+            custContact: this.data.custContact,
+            custTel: this.data.custTel,
+            custAddr: this.data.custAddr,
+            isDelivery: this.data.isDelivery ? 1 : 0
         }
         if (this.data.contact === '') {
             wx.showToast({

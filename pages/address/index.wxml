@@ -23,9 +23,8 @@
     </picker>
 </view>
 <view class="cell plr15 ub ub-ac btc">
-    <view class="tit">
-        <text class="red">*</text>详细地址</view>
-    <input class="ub-f1 tx-r" type="text" value="{{ addr }}" bindinput="bindInput2" placeholder="详细地址" />
+    <view class="tit"><text class="red">*</text>详细地址</view>
+    <input class="ub-f1 tx-r" type="text" value="{{ addr }}" bindinput="bindInput3" placeholder="详细地址" />
 </view>
 
 <!-- <view class="bgb plr15 ub ub-ver btc">
@@ -35,23 +34,23 @@
     </view>
 </view> -->
 <view class="cell plr15 ub ub-ac btc">
-    <view class="tit"><text class="red">*</text>是否自提</view>
-    <switch checked="{{switch1Checked}}" bindchange="switch1Change"/>
+    <view class="tit ub-f1"><text class="red">*</text>是否自提</view>
+    <switch checked="{{isDelivery}}" bindchange="switch1Change" color="#c3a769"/>
 </view>
-<view hidden="{{!switch1Checked}}" class="cell plr15 ub ub-ac">
+<view hidden="{{!isDelivery}}" class="cell plr15 ub ub-ac btc">
     <view class="tit">
         <text class="red">*</text>自提收货人</view>
-    <input class="ub-f1 tx-r" type="text" value="{{contact}}" bindinput="bindInput1" placeholder="收货人姓名" />
+    <input class="ub-f1 tx-r" type="text" value="{{custContact}}" bindinput="bindInput4" placeholder="自提收货人" />
 </view>
-<view hidden="{{!switch1Checked}}" class="cell plr15 ub ub-ac btc">
+<view hidden="{{!isDelivery}}" class="cell plr15 ub ub-ac btc">
     <view class="tit">
         <text class="red">*</text>自提手机号码</view>
-    <input class="ub-f1 tx-r" type="text" value="{{tel}}" bindinput="bindInput2" placeholder="收货人电话" />
+    <input class="ub-f1 tx-r" type="text" value="{{custTel}}" bindinput="bindInput5" placeholder="自提手机号码" />
 </view>
-<view hidden="{{!switch1Checked}}" class="cell plr15 ub ub-ac btc">
+<view hidden="{{!isDelivery}}" class="cell plr15 ub ub-ac btc">
     <view class="tit">
         <text class="red">*</text>自提详细地址</view>
-    <input class="ub-f1 tx-r" type="text" value="{{ addr }}" bindinput="bindInput2" placeholder="详细地址" />
+    <input class="ub-f1 tx-r" type="text" value="{{ custAddr }}" bindinput="bindInput6" placeholder="自提详细地址" />
 </view>
 
 <view class="mt30 plr20">
