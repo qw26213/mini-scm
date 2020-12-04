@@ -128,6 +128,11 @@ service.addrDefault = (data) => {
   return http.post(apiUrl, data);
 }
 
+//根据经纬度查询地址
+service.getByLatLonDistance = (data) => {
+  let apiUrl = api + '/drp/mm/cust/getByLatLonDistance'
+  return http.post(apiUrl, data);
+}
 
 module.exports = {
   service: service
