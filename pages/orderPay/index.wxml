@@ -3,7 +3,7 @@
     <view class="txt"><text>{{addrInfo.contact}}</text><text style="margin-left:40rpx">{{addrInfo.tel}}</text></view>
     <view class="txt">{{addrInfo.province}}{{filter.cityFormat(addrInfo.city)}}{{addrInfo.district}}{{addrInfo.addr}}</view>
     <image src="/images/arrow-right.png" class="arrow-right"></image>
-    <view class="tips"><image src="/images/tips.png"></image> 收货不便时可选择代收服务</view>
+    <view class="tips ub ub-ac"><image src="/images/tips.png" style="margin-right:6rpx"></image><view>收货不便时可选择自提网点</view></view>
 </view>
 <view wx:else class="addressInfo ub ub-ac btc" bindtap="toPath" data-url="/pages/address/list?type=1">
     <view class="ub-f1 itemTit">选择收货地址</view>

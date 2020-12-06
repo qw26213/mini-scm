@@ -31,6 +31,7 @@ Page({
                         isDelivery: res.isDelivery == 1,
                         custAddr: res.custAddr
                     })
+                    console.log(this.data.custAddr)
                 },
                 error: err => {},
                 complete: () => wx.hideToast()
@@ -159,8 +160,7 @@ Page({
                 custContact: obj.custName,
                 custTel: obj.tel,
                 custAddr: obj.addr,
-                longitude: this.data.longitude,
-                latitude: this.data.latitude,
+                custId: obj.id,
                 ...data
             }
         } else {

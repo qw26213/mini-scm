@@ -19,4 +19,4 @@ page{box-sizing:border-box;background-color:#f5f5f5}
 .btn_common{background:#c3a769;height:96rpx;color:#333;font-size:34rpx;width:380rpx;font-weight:bolder;border-radius: 0;color: #fff}
 
 .tips{font-size: 24rpx;color: #333;position: absolute;left: 0rpx;bottom: 20rpx;width: 100%;padding-left: 30rpx;}
-.tips image{display: inline-block;width: 28rpx;height: 28rpx;vertical-align: middle;}
+.tips image{display: block;width: 28rpx;height: 28rpx;}

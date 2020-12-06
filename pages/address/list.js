@@ -3,8 +3,8 @@ import { errDialog, loading } from '../../utils/util'
 const app = getApp();
 Page({
     data: {
-        datalist: [],
-        addrlist: [],
+        datalist: [], //收货地址
+        custlist: [], //网点地址
         isWrite: false,
         isShowNull: true,
         certStatus: 0,
@@ -27,6 +27,9 @@ Page({
                     datalist: res.filter(item => item.tel !== null),
                 })
                 this.setData({
+                    custlist: this.data.datalist.filter(item => item.custTel && item.custAddr),
+                })
+                this.setData({
                     isShowNull: this.data.datalist.length != 0
                 })
             },
@@ -38,6 +41,7 @@ Page({
         var id = e.currentTarget.dataset.id
         if (!this.data.isWrite) {
             wx.setStorageSync('selectAddrId', id)
+            wx.setStorageSync('selectAddrType', 1)
             wx.navigateBack(-1)
             this.setDefault(id)
         } else {
@@ -48,8 +52,8 @@ Page({
         var id = e.currentTarget.dataset.id
         if (!this.data.isWrite) {
             wx.setStorageSync('selectAddrId', id)
+            wx.setStorageSync('selectAddrType', 2)
             wx.navigateBack(-1)
-            this.setDefault(id)
         } else {
             wx.navigateTo({ url: '/pages/address/index?id=' + id })
         }
@@ -66,4 +70,4 @@ Page({
     toAdd: function() {
         wx.navigateTo({ url: '/pages/address/index?from=any' });
     }
-});
+})

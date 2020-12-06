@@ -5,7 +5,7 @@
             <text style="margin-left:40rpx">{{ item.tel }}</text>
             <text wx:if="{{item.isDefault}}">(默认)</text>
         </view>
-        <view class="txt">{{item.province}}{{filter.cityFormat(addrInfo.city)}}{{item.district}}{{item.addr}}</view>
+        <view class="txt">{{item.province}}{{filter.cityFormat(item.city)}}{{item.district}}{{item.addr}}</view>
         <image src="/images/arrow-right.png" class="arrow-right"></image>
 	</view>
 </view>
@@ -19,22 +19,18 @@
     <button form-type="submit" class="add" role="button" aria-disabled="false" bindtap="toAdd">新增收货地址</button>
 </view>
 
-<view wx:if="{{ !isWrite }}" class="tit">代收驿站</view>
-<view wx:if="{{ !isWrite }}" class="content plr10" style="padding-top:10rpx">
-	<view class="addressInfo">
-        <view class="txt" style="font-weight:bold"><text>王红果</text><text style="margin-left:40rpx">15011532730</text></view>
-        <view class="txt">北京大道25号国美超市一楼服务处</view>
-        <image src="/images/arrow-right.png" class="arrow-right"></image>
-	</view>
-	<view class="addressInfo">
-        <view class="txt" style="font-weight:bold"><text>王红果</text><text style="margin-left:40rpx">15011532730</text></view>
-        <view class="txt">北京大道25号国美超市一楼服务处</view>
-        <image src="/images/arrow-right.png" class="arrow-right"></image>
-	</view>
-	<view class="addressInfo">
-        <view class="txt" style="font-weight:bold"><text>王红果</text><text style="margin-left:40rpx">15011532730</text></view>
-        <view class="txt">北京大道25号国美超市一楼服务处</view>
+<view wx:if="{{ !isWrite && custlist.length > 0 }}" class="titDiv ub ub-ac">
+    <view class="tit">自提网点</view>
+</view>
+
+<view wx:if="{{ !isWrite && custlist.length > 0 }}"  wx:for="{{custlist}}" wx:for-item="item" wx:key="unique" class="content plr10" style="padding-top:10rpx">
+	<view class="addressInfo" bindtap="selectAddr" data-id="{{item.id}}">
+        <view class="txt" style="font-weight:bold">
+            <text wx:if="{{item.custName}}">{{ item.custName }}</text>
+            <text wx:if="{{item.custContact}}" style="margin-left:30rpx">{{ item.custContact }}</text>
+            <text wx:if="{{item.custTel}}" style="margin-left:30rpx">{{ item.custTel }}</text>
+        </view>
+        <view class="txt">{{item.province}}{{filter.cityFormat(item.city)}}{{item.district}}{{ item.custAddr }}</view>
         <image src="/images/arrow-right.png" class="arrow-right"></image>
 	</view>
 </view>
-

@@ -12,4 +12,7 @@ button.compile{background-color: #c3a769;font-size: 32rpx;color: #fff;width: 80r
 
 .btn-add{position: fixed;left: 0;bottom: 0;width: 100%;}
 button.add{background-color: #c3a769;font-size: 32rpx;color: #fff;width: 100%;height: 96rpx;border-radius: 0;line-height: 96rpx;}
-.tit{font-size:28rpx;color:#333;margin-top:60rpx;padding-left:30rpx;line-height:46rpx;}
+.titDiv{margin-top:60rpx;}
+.titDiv .tit{font-size:28rpx;color:#333;padding-left:30rpx;line-height:46rpx;}
+.titDiv .txt{font-size:24rpx;color:#666;}
+.titDiv image{display: block;width: 28rpx;height: 28rpx;}

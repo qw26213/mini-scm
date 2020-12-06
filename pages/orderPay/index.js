@@ -41,9 +41,21 @@ Page({
     },
     onShow: function() {
         var selectAddrId = wx.getStorageSync('selectAddrId')
-        if (this.data.addresslist.length > 0) {
+        var selectAddrType = wx.getStorageSync('selectAddrType')
+        if (this.data.addresslist.length > 0 && selectAddrType) {
+            let obj = this.data.addresslist.find(item => item.id === selectAddrId)
+            if (selectAddrType == 2) {
+                obj = {
+                    contact: obj.custName,
+                    tel: obj.custTel,
+                    addr: obj.custAddr,
+                    province: obj.province,
+                    city: obj.city,
+                    district: obj.district
+                }
+            }
             this.setData({
-                addrInfo: this.data.addresslist.find(item => item.id === selectAddrId)
+                addrInfo: obj
             })
         }
     },

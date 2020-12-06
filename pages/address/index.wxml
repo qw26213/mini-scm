@@ -34,7 +34,7 @@
 <view wx:if="{{isDelivery}}" class="cell plr15 ub ub-ac btc">
     <view class="tit"><text class="red">*</text>附近自提点</view>
     <picker class="ub-f1" mode="selector" bindchange="bindCustChange" range="{{addrlist}}" range-key="{{'addr'}}" value="{{custIndex}}">
-        <view class="picker ub ub-ac ub-pe" wx:if="{{!!custAddr}}">
+        <view class="picker ub ub-ac ub-pe" wx:if="{{custAddr}}">
           {{custAddr}}
           <image class="arrow-right" src="/images/arrow-right.png"></image>
         </view>
