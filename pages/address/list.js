@@ -13,35 +13,12 @@ Page({
     onLoad: function(options) {
         if (options.type) {
             this.setData({ isWrite: false })
-            wx.getLocation({
-                type: 'gcj02',
-                success: (res) => {
-                    const longitude = res.longitude
-                    const latitude = res.latitude
-                    const obj = {longitude, latitude}
-                    this.getDataByLatLng(obj)
-                },
-                fail: (err) => {
-                    errDialog('请设置允许访问位置信息！');
-                }
-            })
         } else {
             this.setData({ isWrite: true })
         }
     },
     onShow: function() {
         this.getData()
-    },
-    getDataByLatLng: function(obj) {
-        service.getByLatLonDistance(obj).subscribe({
-            next: res => {
-                this.setData({
-                    addrlist: res
-                })
-            },
-            error: err => console.log(err),
-            complete: () => wx.hideToast()
-        })
     },
     getData: function() {
         service.addrlist().subscribe({

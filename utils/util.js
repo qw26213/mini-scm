@@ -66,6 +66,13 @@ function errDialog(content) {
     })
 }
 
+function txtToast(content) {
+    wx.showToast({
+        title: content,
+        icon: 'none'
+    })
+}
+
 function checkMobile(sMobile) {
     if (!(/^1[3|4|5|8|7][0-9]\d{8}$/.test(sMobile))) {
         return false;
@@ -105,6 +112,7 @@ module.exports = {
     formatTime: formatTime,
     loading:loading,
     errDialog:errDialog,
+    txtToast:txtToast,
     getUrlParma:getUrlParma,
     checkMobile:checkMobile,
     delBlank:delBlank,

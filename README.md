@@ -1,3 +1,6 @@
+# 代码说明
+
+```
 1.配置appid
 
 从小程序后台拿到appid后，配置到project.config.json文件里面.
@@ -17,3 +20,4 @@ utils/constant.js文件里的apiUrl参数.
 5.调试开发工具
 
 下载微信开发者工具，稳定版本
+```

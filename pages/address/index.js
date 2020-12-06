@@ -1,6 +1,6 @@
 import { constant } from '../../utils/constant';
 import { service } from '../../service';
-import { errDialog, loading } from '../../utils/util';
+import { errDialog, txtToast, loading } from '../../utils/util';
 var app = getApp();
 Page({
     data: {
@@ -10,9 +10,11 @@ Page({
         region: [],
         addr: '',
         isDelivery: false,
-        custContact: '',
-        custTel: '',
-        custAddr: ''
+        custAddr: '',
+        addrlist: [],
+        custIndex: -1,
+        latitude: '',
+        longitude: ''
     },
     onLoad: function(options) {
         wx.showShareMenu({ withShareTicket: true })
@@ -25,7 +27,9 @@ Page({
                         contact: res.contact,
                         tel:res.tel,
                         addr: res.addr,
-                        region: [res.province, res.city, res.district]
+                        region: [res.province, res.city, res.district],
+                        isDelivery: res.isDelivery == 1,
+                        custAddr: res.custAddr
                     })
                 },
                 error: err => {},
@@ -34,6 +38,31 @@ Page({
         } else {
             wx.setNavigationBarTitle({title: '新增收货地址'})
         }
+        wx.getLocation({
+            type: 'gcj02',
+            success: (res) => {
+                const longitude = res.longitude
+                const latitude = res.latitude
+                const obj = {longitude, latitude}
+                this.setData({ longitude, latitude })
+                this.getDataByLatLng(obj)
+            },
+            fail: (err) => {
+                errDialog('请设置允许访问位置信息！');
+            }
+        })
+    },
+    getDataByLatLng: function(obj) {
+        service.getByLatLonDistance(obj).subscribe({
+            next: res => {
+                const result = res || []
+                this.setData({
+                    addrlist: result
+                })
+            },
+            error: err => console.log(err),
+            complete: () => wx.hideToast()
+        })
     },
     toDetail: function(e) {
         var id = 10 // e.currentTarget.dataset.id;
@@ -42,13 +71,7 @@ Page({
             url: '/pages/detail/index?share=0&referer=0&id=' + id + '&storeid=' + storeid
         });
     },
-    // 地址选择
-    bindRegionChange: function(e) {
-        this.setData({
-            region: e.detail.value
-        })
-    },
-    switch1Change: function() {
+    switchChange: function() {
         this.setData({ isDelivery: !this.data.isDelivery })
     },
     bindInput1: function(e) {
@@ -60,14 +83,18 @@ Page({
     bindInput3: function(e) {
         this.setData({addr: e.detail.value})
     },
-    bindInput4: function(e) {
-        this.setData({custContact: e.detail.value})
+    bindRegionChange: function(e) {
+        this.setData({
+            region: e.detail.value
+        })
     },
-    bindInput5: function(e) {
-        this.setData({custTel: e.detail.value})
-    },
-    bindInput6: function(e) {
-        this.setData({custAddr: e.detail.value})
+    bindCustChange: function(e) {
+        if (e.detail.value > -1) {
+            this.setData({
+                custIndex: e.detail.value,
+                custAddr: this.data.addrlist[e.detail.value].addr
+            })
+        }
     },
     delData: function(){
         var id = this.data.id
@@ -104,40 +131,42 @@ Page({
             province: this.data.region[0],
             city: this.data.region[1],
             district: this.data.region[2],
-            custContact: this.data.custContact,
-            custTel: this.data.custTel,
-            custAddr: this.data.custAddr,
             isDelivery: this.data.isDelivery ? 1 : 0
         }
         if (this.data.contact === '') {
-            wx.showToast({
-                title: '收货人不能为空',
-                icon: 'none'
-            })
+            txtToast('收货人不能为空')
             return
         }
         if (this.data.tel === '') {
-            wx.showToast({
-                title: '手机号码不能为空',
-                icon: 'none'
-            })
+            txtToast('手机号码不能为空')
             return
         }
         if (this.data.region.length === 0) {
-            wx.showToast({
-                title: '所在地区不能为空',
-                icon: 'none'
-            })
+            txtToast('所在地区不能为空')
             return
         }
         if (this.data.addr === '') {
-            wx.showToast({
-                title: '详细地址不能为空',
-                icon: 'none'
-            })
+            txtToast('详细地址不能为空')
             return
         }
-        service.addrSave(data).subscribe({
+        if (this.data.isDelivery && this.data.custAddr == '') {
+            txtToast('请选择自提网点')
+            return
+        }
+        if (this.data.isDelivery) {
+            const obj = this.data.addrlist[this.data.custIndex]
+            var reqObj = {
+                custContact: obj.custName,
+                custTel: obj.tel,
+                custAddr: obj.addr,
+                longitude: this.data.longitude,
+                latitude: this.data.latitude,
+                ...data
+            }
+        } else {
+            var reqObj = data
+        }
+        service.addrSave(reqObj).subscribe({
             next: res => {
                 wx.showToast({
                     title: '地址保存成功',

@@ -6,8 +6,8 @@
 </view>
 <view class="cell plr15 ub ub-ac btc">
     <view class="tit">
-        <text class="red">*</text>手机号码</view>
-    <input class="ub-f1 tx-r" type="text" value="{{tel}}" bindinput="bindInput2" placeholder="收货人电话" />
+        <text class="red">*</text>手机号</view>
+    <input class="ub-f1 tx-r" type="text" value="{{tel}}" bindinput="bindInput2" placeholder="收货人手机号" />
 </view>
 <view class="cell plr15 ub ub-ac btc">
     <view class="tit"><text class="red">*</text>所在地区</view>
@@ -24,33 +24,25 @@
 </view>
 <view class="cell plr15 ub ub-ac btc">
     <view class="tit"><text class="red">*</text>详细地址</view>
-    <input class="ub-f1 tx-r" type="text" value="{{ addr }}" bindinput="bindInput3" placeholder="详细地址" />
+    <input class="ub-f1 tx-r" type="text" value="{{ addr }}" bindinput="bindInput3" placeholder="详细地址(具体到门牌号)" />
 </view>
 
-<!-- <view class="bgb plr15 ub ub-ver btc">
-    <view class="cell tit ub ub-ac"><text class="red">*</text>详细地址</view>
-    <view class="udb">
-        <textarea value="{{addr}}" class="textarea" placeholder="详细地址（具体到门牌号）" bindinput="bindInput3" placeholder-style=""></textarea>
-    </view>
-</view> -->
 <view class="cell plr15 ub ub-ac btc">
-    <view class="tit ub-f1"><text class="red">*</text>是否自提</view>
-    <switch checked="{{isDelivery}}" bindchange="switch1Change" color="#c3a769"/>
+    <view class="tit ub-f1"><text class="red">*</text>添加附近自提点</view>
+    <switch checked="{{isDelivery}}" bindchange="switchChange" color="#c3a769"/>
 </view>
-<view hidden="{{!isDelivery}}" class="cell plr15 ub ub-ac btc">
-    <view class="tit">
-        <text class="red">*</text>自提收货人</view>
-    <input class="ub-f1 tx-r" type="text" value="{{custContact}}" bindinput="bindInput4" placeholder="自提收货人" />
-</view>
-<view hidden="{{!isDelivery}}" class="cell plr15 ub ub-ac btc">
-    <view class="tit">
-        <text class="red">*</text>自提手机号码</view>
-    <input class="ub-f1 tx-r" type="text" value="{{custTel}}" bindinput="bindInput5" placeholder="自提手机号码" />
-</view>
-<view hidden="{{!isDelivery}}" class="cell plr15 ub ub-ac btc">
-    <view class="tit">
-        <text class="red">*</text>自提详细地址</view>
-    <input class="ub-f1 tx-r" type="text" value="{{ custAddr }}" bindinput="bindInput6" placeholder="自提详细地址" />
+<view wx:if="{{isDelivery}}" class="cell plr15 ub ub-ac btc">
+    <view class="tit"><text class="red">*</text>附近自提点</view>
+    <picker class="ub-f1" mode="selector" bindchange="bindCustChange" range="{{addrlist}}" range-key="{{'addr'}}" value="{{custIndex}}">
+        <view class="picker ub ub-ac ub-pe" wx:if="{{!!custAddr}}">
+          {{custAddr}}
+          <image class="arrow-right" src="/images/arrow-right.png"></image>
+        </view>
+        <view class="picker ub ub-ac ub-pe" style="color:#aaa" wx:else>
+          请选择自提点
+          <image class="arrow-right" src="/images/arrow-right.png"></image>
+        </view>
+    </picker>
 </view>
 
 <view class="mt30 plr20">
